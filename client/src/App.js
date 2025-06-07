@@ -1,7 +1,9 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { useState, React } from 'react';
 import Navbar from './Component/Navbar/Navbar';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AllRoutes from "./AllRoutes";
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -22,7 +24,10 @@ function App() {
   const [editCreateChannelButton, setEditCreateChannelButton] = useState(false);
   const [videoUploadPage, setVideoUploadPage] = useState(false);
   return (
-    <Navbar setEditCreateChannelButton={setEditCreateChannelButton} toggleDrawer={toggleDrawer} />
+    <Router>
+      <Navbar setEditCreateChannelButton={setEditCreateChannelButton} toggleDrawer={toggleDrawer} />
+      <AllRoutes />
+    </Router>
   );
 }
 

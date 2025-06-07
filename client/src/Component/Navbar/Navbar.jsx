@@ -5,13 +5,21 @@ import {Link} from "react-router-dom";
 import {RiVideoAddLine} from "react-icons/ri";
 import {IoMdNotificationsOutline} from "react-icons/io";
 import {BiUserCircle} from "react-icons/bi";
+import SearchBar from "./SearchBar/SearchBar";
+import Auth from "../../Pages/Auth/Auth";
 
 const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
   const [authButton, setAuthButton] = useState(false);
-  const currentUser = null;
+  // const currentUser = null;
+  const currentUser = {
+    result: {
+      email: "abc@gmail.com",
+      joinedOn: "07/06/2025",
+    },
+  };
   return (
     <>
-      <div className="Conatiner_Navbar">
+      <div className="Container_Navbar">
         <div className="Burger_Logo_Navbar">
           <div className="Burger" onClick={() => toggleDrawer()}>
             <p></p>
@@ -23,6 +31,7 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
             <p className="Logo_Title_Navbar">YouTube Clone</p>
           </Link>
         </div>
+        <SearchBar />
         <RiVideoAddLine size={22} className="Vid_Bell_Navbar" />
         <div className="Apps_Box">
           <p className="AppBox"></p>
@@ -61,6 +70,13 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
           )}
         </div>
       </div>
+      {authButton && (
+        <Auth
+          setEditCreateChannelButton={setEditCreateChannelButton}
+          setAuthButton={setAuthButton}
+          user={currentUser}
+        />
+      )}
     </>
   );
 };
