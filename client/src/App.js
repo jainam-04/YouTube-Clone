@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, React } from 'react';
+import Navbar from './Component/Navbar/Navbar';
 
 function App() {
+  const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
+    display: "none"
+  });
+  const toggleDrawer = () => {
+    if (toggleDrawerSidebar.display === "none") {
+      setToggleDrawerSidebar({
+        display: "flex"
+      });
+    }
+    else {
+      setToggleDrawerSidebar({
+        display: "none"
+      });
+    }
+  }
+  const [editCreateChannelButton, setEditCreateChannelButton] = useState(false);
+  const [videoUploadPage, setVideoUploadPage] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Navbar setEditCreateChannelButton={setEditCreateChannelButton} toggleDrawer={toggleDrawer} />
   );
 }
 
