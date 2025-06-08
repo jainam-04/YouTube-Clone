@@ -6,8 +6,8 @@ import {Link} from "react-router-dom";
 const ShowVideo = ({vid}) => {
   return (
     <>
-      <Link to={"/"}>
-        <video src={vid} className="Video_ShowVideo" />
+      <Link to={`/videoPage/${vid._id}`}>
+        <video src={vid.video_src} className="Video_ShowVideo" />
       </Link>
       <div className="Video_Description">
         <div className="Channel_Logo_App">

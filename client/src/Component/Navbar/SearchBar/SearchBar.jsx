@@ -24,7 +24,7 @@ const SearchBar = () => {
               value={searchQuery}
               onClick={(e) => setSearchList(true)}
             />
-            <Link>
+            <Link to={`/search/${searchQuery}`}>
               <FaSearch className="SearchIcon_SearchBar" />
             </Link>
             <BsMicFill className="Mic_SearchBar" />
