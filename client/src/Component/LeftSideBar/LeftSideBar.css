@@ -33,53 +33,63 @@
 }
 
 /** drawer sidebar*/
-.container_DrawaerLeftSidebar {
+.Container_DrawerLeftSideBar {
   position: absolute;
   display: flex;
   width: 100vw;
   z-index: 500;
 }
-.container2_DrawaerLeftSidebar {
+
+.Container2_DrawerLeftSideBar {
   height: calc(100vh - 3.6rem);
   overflow-y: auto;
   background-color: rgb(28, 28, 28);
   width: 15rem;
 }
-.Drawer_leftsidebar,
-.libraryBtn_Drawerleftsidebar {
+
+.Drawer_LeftSideBar,
+.LibraryButton_DrawerLeftSideBar {
   padding-top: 0.5rem;
   border-bottom: 2px solid rgba(128, 128, 128, 0.293);
 }
-.icon_sidebar_div p {
+
+.Icon_SideBar_Div p {
   display: flex;
   margin: 0;
 }
-.subScriptions_lsdbar {
+
+.Subscriptions_LeftSideBar {
   color: white;
 }
-.subScriptions_lsdbar h3 {
+
+.Subscriptions_LeftSideBar h3 {
   text-decoration: underline;
   margin: 20px 10px;
 }
-.chanel_lsdbar {
+
+.Channel_LeftSideBar {
   display: flex;
   cursor: pointer;
 }
-.chanel_lsdbar:hover {
+
+.Channel_LeftSideBar:hover {
   color: rgb(77, 77, 243);
 }
-.chanel_lsdbar p {
+
+.Channel_LeftSideBar p {
   border: 1px solid;
   background-color: grey;
   padding: 0.5rem;
   border-radius: 100%;
   margin: 1rem;
 }
-.chanel_lsdbar div {
+
+.Channel_LeftSideBar div {
   margin: auto;
   width: 60%;
 }
-.container3_DrawaerLeftSidebar {
+
+.Container3_DrawerLeftSideBar {
   flex-grow: 1;
   background-color: rgba(0, 0, 0, 0.488);
 }

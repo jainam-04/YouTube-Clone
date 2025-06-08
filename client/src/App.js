@@ -4,6 +4,7 @@ import { useState, React } from 'react';
 import Navbar from './Component/Navbar/Navbar';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AllRoutes from "./AllRoutes";
+import DrawerSlider from "../src/Component/LeftSideBar/DrawerSlider"
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -26,6 +27,7 @@ function App() {
   return (
     <Router>
       <Navbar setEditCreateChannelButton={setEditCreateChannelButton} toggleDrawer={toggleDrawer} />
+      <DrawerSlider toggleDrawer={toggleDrawer} toggleDrawerSidebar={toggleDrawerSidebar} />
       <AllRoutes />
     </Router>
   );
