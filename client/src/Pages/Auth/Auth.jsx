@@ -1,7 +1,7 @@
 import React from "react";
 import {BiLogOut} from "react-icons/bi";
 import {Link} from "react-router-dom";
-import "./Auth.css"
+import "./Auth.css";
 
 const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
   return (
@@ -29,7 +29,10 @@ const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
             {user?.result.name ? (
               <>
                 {
-                  <Link to={"/"} className="Button_Auth">
+                  <Link
+                    to={`/channel/${user?.result?._id}`}
+                    className="Button_Auth"
+                  >
                     Your Channel
                   </Link>
                 }

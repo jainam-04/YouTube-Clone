@@ -4,6 +4,7 @@ import video1 from "../../Component/Videos/vid.mp4";
 import {Link, useParams} from "react-router-dom";
 import moment from "moment";
 import LikeWatchLaterSaveButtons from "./LikeWatchLaterSaveButtons";
+import Comments from "../../Component/Comments/Comments";
 
 const VideoPage = () => {
   const videoList = [
@@ -42,6 +43,8 @@ const VideoPage = () => {
   ];
   const currentUser = {
     result: {
+      _id: 1,
+      name: "abc",
       email: "abc@gmail.com",
       joinedOn: "07/06/2025",
     },
@@ -82,6 +85,7 @@ const VideoPage = () => {
                 <h2>
                   <u>Comments</u>
                 </h2>
+                <Comments video_id={vv._id} />
               </div>
             </div>
           </div>
