@@ -36,7 +36,7 @@ const LeftSideBar = () => {
             Subscription
           </div>
         </div>
-        <NavLink to={"/"} className="Icon_SideBar_Div">
+        <NavLink to={"/library"} className="Icon_SideBar_Div">
           <MdOutlineVideoLibrary size={22} className="Icon_SideBar" />
           <div className="Text_SideBar_Icon">Library</div>
         </NavLink>

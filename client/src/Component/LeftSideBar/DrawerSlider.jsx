@@ -61,7 +61,7 @@ const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
             </div>
           </div>
           <div className="LibraryButton_DrawerLeftSideBar">
-            <NavLink to={"/"} className="Icon_SideBar_Div">
+            <NavLink to={"/library"} className="Icon_SideBar_Div">
               <p>
                 <MdOutlineVideoLibrary
                   size={22}

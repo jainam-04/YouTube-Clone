@@ -4,6 +4,7 @@ import Home from "./Pages/Home/Home";
 import Search from "./Pages/Search/Search";
 import VideoPage from "./Pages/VideoPage/VideoPage";
 import Channel from "./Pages/Channel/Channel";
+import Library from "./Pages/Library/Library";
 
 const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
   return (
@@ -20,6 +21,7 @@ const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
           />
         }
       />
+      <Route path="/library" element={<Library />} />
     </Routes>
   );
 };
