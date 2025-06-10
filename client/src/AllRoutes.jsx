@@ -5,7 +5,7 @@ import Search from "./Pages/Search/Search";
 import VideoPage from "./Pages/VideoPage/VideoPage";
 import Channel from "./Pages/Channel/Channel";
 
-const AllRoutes = ({setCreateEditChannelButton, videoUploadPage}) => {
+const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -15,8 +15,8 @@ const AllRoutes = ({setCreateEditChannelButton, videoUploadPage}) => {
         path="/channel/:cid"
         element={
           <Channel
-            setEditCreateChannelButton={setCreateEditChannelButton}
-            videoUploadPage={videoUploadPage}
+            setEditCreateChannelButton={setEditCreateChannelButton}
+            setVideoUploadPage={setVideoUploadPage}
           />
         }
       />

@@ -1,0 +1,57 @@
+.Container3_Channel {
+  border-bottom: 3px solid rgba(1, 26, 96, 0.692);
+  padding: 0.5rem;
+  color: whitesmoke;
+  position: relative;
+}
+
+.Channel_Logo_Channel {
+  border: 10px solid rgba(49, 7, 219, 0.66);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  display: flex;
+  margin: 0 auto;
+  background-color: rgba(92, 135, 4, 0.769);
+}
+
+.Channel_Logo_Channel b {
+  margin: auto;
+  font-size: 3rem;
+}
+
+.Description_Channel {
+  text-align: center;
+}
+
+.Description_Channel b {
+  font-size: 4rem;
+}
+
+.Description_Channel p {
+  font-size: large;
+}
+
+.UploadButton_Channel,
+.EditButton_Channel {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  background-color: blue;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  color: white;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.UploadButton_Channel {
+  top: 4rem;
+}
+
+.UploadButton_Channel:hover,
+.EditButton_Channel:hover {
+  border: 2px solid;
+  color: rgb(231, 140, 14);
+}

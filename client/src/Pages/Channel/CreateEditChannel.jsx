@@ -7,7 +7,7 @@ const CreateEditChannel = ({setEditCreateChannelButton}) => {
       _id: 1,
       name: "abc",
       email: "abc@gmail.com",
-      joinedOn: "07/06/2025",
+      joined_on: "07/06/2025",
     },
   };
   const [name, setName] = useState(currentUser?.result?.name);

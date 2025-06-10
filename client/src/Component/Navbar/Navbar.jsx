@@ -13,10 +13,10 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
   // const currentUser = null;
   const currentUser = {
     result: {
-      _id:1,
-      name:"abc",
+      _id: 1,
+      name: "abc",
       email: "abc@gmail.com",
-      joinedOn: "07/06/2025",
+      joined_on: "07/06/2025",
     },
   };
   return (
