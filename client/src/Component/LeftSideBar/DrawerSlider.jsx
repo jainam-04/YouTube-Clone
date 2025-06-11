@@ -71,7 +71,7 @@ const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
                 <div className="Text_SideBar_Icon">Library</div>
               </p>
             </NavLink>
-            <NavLink to={"/"} className="Icon_SideBar_Div">
+            <NavLink to={"/history"} className="Icon_SideBar_Div">
               <p>
                 <FaHistory
                   size={22}
@@ -81,7 +81,7 @@ const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
                 <div className="Text_SideBar_Icon">History</div>
               </p>
             </NavLink>
-            <NavLink to={"/"} className="Icon_SideBar_Div">
+            <NavLink to={"/your_videos"} className="Icon_SideBar_Div">
               <p>
                 <AiFillPlaySquare
                   size={22}
@@ -91,7 +91,7 @@ const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
                 <div className="Text_SideBar_Icon">Your Videos</div>
               </p>
             </NavLink>
-            <NavLink to={"/"} className="Icon_SideBar_Div">
+            <NavLink to={"/watch_later"} className="Icon_SideBar_Div">
               <p>
                 <MdOutlineWatchLater
                   size={22}
@@ -101,7 +101,7 @@ const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
                 <div className="Text_SideBar_Icon">Watch Later</div>
               </p>
             </NavLink>
-            <NavLink to={"/"} className="Icon_SideBar_Div">
+            <NavLink to={"/liked_videos"} className="Icon_SideBar_Div">
               <p>
                 <AiFillLike
                   size={22}

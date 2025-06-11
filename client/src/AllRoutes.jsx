@@ -5,6 +5,10 @@ import Search from "./Pages/Search/Search";
 import VideoPage from "./Pages/VideoPage/VideoPage";
 import Channel from "./Pages/Channel/Channel";
 import Library from "./Pages/Library/Library";
+import LikedVideos from "./Pages/LikedVideos/LikedVideos";
+import WatchHistory from "./Pages/WatchHistory/WatchHistory";
+import WatchLater from "./Pages/WatchLater/WatchLater";
+import YourVideos from "./Pages/YourVideos/YourVideos";
 
 const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
   return (
@@ -22,6 +26,10 @@ const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
         }
       />
       <Route path="/library" element={<Library />} />
+      <Route path="/liked_videos" element={<LikedVideos />} />
+      <Route path="/history" element={<WatchHistory />} />
+      <Route path="/watch_later" element={<WatchLater />} />
+      <Route path="/your_videos" element={<YourVideos />} />
     </Routes>
   );
 };
