@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./VideoUpload.css";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
+import { useSelector } from "react-redux";
 
 const VideoUpload = ({setVideoUploadPage}) => {
   const [title, setTitle] = useState("");
@@ -9,14 +10,7 @@ const VideoUpload = ({setVideoUploadPage}) => {
   const handleSetVideoFile = (e) => {
     setVideoFile(e.target.files[0]);
   };
-  const currentUser = {
-    result: {
-      _id: 1,
-      name: "abc",
-      email: "abc@gmail.com",
-      joined_on: "07/06/2025",
-    },
-  };
+  const currentUser = useSelector((state) => state.currentUserReducer);
   const uploadVideoFile = () => {
     if (!title) {
       alert("Please enter title of the video!!");

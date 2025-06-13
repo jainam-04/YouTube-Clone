@@ -2,8 +2,17 @@ import React from "react";
 import {BiLogOut} from "react-icons/bi";
 import {Link} from "react-router-dom";
 import "./Auth.css";
+import {googleLogout} from "@react-oauth/google";
+import {useDispatch} from "react-redux";
+import {setCurrentUser} from "../../Action/CurrentUser";
 
 const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(setCurrentUser(null));
+    localStorage.clear();
+    googleLogout();
+  };
   return (
     <>
       <div
@@ -48,7 +57,7 @@ const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
               </>
             )}
             <div>
-              <div className="Button_Auth">
+              <div className="Button_Auth" onClick={() => logout()}>
                 <BiLogOut />
                 Log Out
               </div>

@@ -5,6 +5,7 @@ import {Link, useParams} from "react-router-dom";
 import moment from "moment";
 import LikeWatchLaterSaveButtons from "./LikeWatchLaterSaveButtons";
 import Comments from "../../Component/Comments/Comments";
+import { useSelector } from "react-redux";
 
 const VideoPage = () => {
   const videoList = [
@@ -41,14 +42,7 @@ const VideoPage = () => {
       description: "Description of video 4",
     },
   ];
-  const currentUser = {
-    result: {
-      _id: 1,
-      name: "abc",
-      email: "abc@gmail.com",
-      joined_on: "07/06/2025",
-    },
-  };
+  const currentUser = useSelector((state) => state.currentUserReducer);
   const {vid} = useParams();
   const vidNumber = parseInt(vid, 10);
   const vv = videoList?.filter((q) => q._id === vidNumber)[0];

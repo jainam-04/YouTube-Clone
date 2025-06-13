@@ -1,12 +1,14 @@
 // import logo from './logo.svg';
 import './App.css';
-import { useState, React } from 'react';
+import { useState, React, useEffect } from 'react';
 import Navbar from './Component/Navbar/Navbar';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AllRoutes from "./AllRoutes";
 import DrawerSlider from "../src/Component/LeftSideBar/DrawerSlider"
 import CreateEditChannel from './Pages/Channel/CreateEditChannel';
 import VideoUpload from './Pages/VideoUpload/VideoUpload';
+import { useDispatch } from 'react-redux';
+import { fetchAllChannels } from './Action/ChannelUser';
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -26,6 +28,11 @@ function App() {
   }
   const [editCreateChannelButton, setEditCreateChannelButton] = useState(false);
   const [videoUploadPage, setVideoUploadPage] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(fetchAllChannels())
+  }, [dispatch])
+  
   return (
     <Router>
       {videoUploadPage && <VideoUpload setVideoUploadPage={setVideoUploadPage} />}

@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from "cors"
 import bodyParser from "body-parser"
+import userRoutes from "./Routes/User.js"
 
 dotenv.config()
 const app = express()
@@ -23,3 +24,4 @@ mongoose.connect(DB_URL).then(() => {
 }).catch((error) => {
       console.log(error)
 })
+app.use("/user", userRoutes)

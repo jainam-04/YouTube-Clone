@@ -3,6 +3,7 @@ import "./YourVideos.css";
 import video1 from "../../Component/Videos/vid.mp4";
 import LeftSideBar from "../../Component/LeftSideBar/LeftSideBar";
 import ShowVideoGrid from "../../Component/ShowVideoGrid/ShowVideoGrid";
+import { useSelector } from "react-redux";
 
 const YourVideos = () => {
   const YourVideosVideoList = [
@@ -39,7 +40,7 @@ const YourVideos = () => {
       description: "Description of video 4",
     },
   ];
-  const currentUser = 1;
+  const currentUser = useSelector((state) => state.currentUserReducer);
   return (
     <>
       <div className="Container_Pages_App">

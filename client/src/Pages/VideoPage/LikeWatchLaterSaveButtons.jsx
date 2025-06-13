@@ -13,19 +13,13 @@ import {
   RiPlayListAddFill,
   RiShareForwardLine,
 } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 const LikeWatchLaterSaveButtons = ({vv, vid}) => {
   const [saveVideo, setSaveVideo] = useState(false);
   const [dislikeButton, setDislikeButton] = useState(false);
   const [likeButton, setLikeButton] = useState(false);
-  const currentUser = {
-    result: {
-      _id: 1,
-      name: "abc",
-      email: "abc@gmail.com",
-      joined_on: "07/06/2025",
-    },
-  };
+  const currentUser = useSelector((state) => state.currentUserReducer);
   const toggleSavedVideo = () => {
     if (currentUser) {
       if (saveVideo) {

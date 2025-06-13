@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./Comments.css";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 const DisplayComments = ({
   cid,
@@ -12,14 +13,7 @@ const DisplayComments = ({
   const [edit, setEdit] = useState(false);
   const [commentBody, setCommentBody] = useState("");
   const [commentId, setCommentId] = useState("");
-  const currentUser = {
-    result: {
-      _id: 1,
-      name: "abc",
-      email: "abc@gmail.com",
-      joined_on: "07/06/2025",
-    },
-  };
+  const currentUser = useSelector((state) => state.currentUserReducer);
   const handleEdit = (cmtid, cmtbody) => {
     setEdit(true);
     setCommentId(cmtid);

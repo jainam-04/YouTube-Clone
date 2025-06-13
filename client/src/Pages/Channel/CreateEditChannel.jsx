@@ -1,18 +1,16 @@
 import React, {useState} from "react";
 import "./CreateEditChannel.css";
+import {useSelector} from "react-redux";
+import {updateChannelData} from "../../Action/ChannelUser.js";
+import {useDispatch} from "react-redux";
+import {login} from "../../Action/Auth.js";
 
 const CreateEditChannel = ({setEditCreateChannelButton}) => {
-  const currentUser = {
-    result: {
-      _id: 1,
-      name: "abc",
-      email: "abc@gmail.com",
-      joined_on: "07/06/2025",
-    },
-  };
-  const [name, setName] = useState(currentUser?.result?.name);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  const [name, setName] = useState(currentUser?.result?.name || "");
   const [description, setDescription] = useState(
-    currentUser?.result?.description
+    currentUser?.result?.description || ""
   );
   const handleSubmit = () => {
     if (!name) {
@@ -20,19 +18,35 @@ const CreateEditChannel = ({setEditCreateChannelButton}) => {
     } else if (!description) {
       alert("Please enter description!!");
     } else {
+      dispatch(
+        updateChannelData(currentUser?.result._id, {
+          name: name,
+          description: description,
+        })
+      );
       setEditCreateChannelButton(false);
+      setTimeout(() => {
+        dispatch(login({email: currentUser.result.email}));
+      }, 5000);
     }
   };
   return (
     <>
       <div className="Container_CreateEditChannel">
-        <input
+        {/* <input
           type="submit"
           name="text"
           value={"x"}
           className="iButton_X"
           onClick={() => setEditCreateChannelButton(false)}
-        />
+        /> */}
+        <button
+          className="iButton_X"
+          name="text"
+          onClick={() => setEditCreateChannelButton(false)}
+        >
+          X
+        </button>
         <div className="Container2_CreateEditChannel">
           <h1>
             {currentUser?.result?.name ? <>Edit</> : <>Create</>} Your Channel
@@ -53,12 +67,19 @@ const CreateEditChannel = ({setEditCreateChannelButton}) => {
             onChange={(e) => setDescription(e.target.value)}
             className="iBox"
           ></textarea>
-          <input
+          {/* <input
             type="submit"
             value="submit"
             onClick={handleSubmit}
             className="iButton"
-          />
+          /> */}
+          <button
+            className="iButton"
+            style={{color: "white"}}
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
         </div>
       </div>
     </>

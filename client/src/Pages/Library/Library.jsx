@@ -6,6 +6,7 @@ import {MdOutlineWatchLater} from "react-icons/md";
 import video1 from "../../Component/Videos/vid.mp4";
 import LeftSideBar from "../../Component/LeftSideBar/LeftSideBar";
 import WHLVideoList from "../../Component/WHL/WHLVideoList";
+import { useSelector } from "react-redux";
 
 const Library = () => {
   const videoList = [
@@ -42,14 +43,7 @@ const Library = () => {
       description: "Description of video 4",
     },
   ];
-  const currentUser = {
-    result: {
-      _id: 1,
-      name: "abc",
-      email: "abc@gmail.com",
-      joined_on: "07/06/2025",
-    },
-  };
+  const currentUser = useSelector((state) => state.currentUserReducer);
   return (
     <>
       <div className="Container_Pages_App">

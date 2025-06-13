@@ -2,16 +2,10 @@ import React from "react";
 import "./WHL.css";
 import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import WHLVideoList from "./WHLVideoList";
+import { useSelector } from "react-redux";
 
 const WHL = ({page, videoList}) => {
-  const currentUser = {
-    result: {
-      _id: 1,
-      name: "abc",
-      email: "abc@gmail.com",
-      joined_on: "07/06/2025",
-    },
-  };
+  const currentUser = useSelector((state) => state.currentUserReducer);
   return (
     <>
       <div className="Container_Pages_App">
