@@ -1,58 +1,31 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./VideoPage.css";
-import video1 from "../../Component/Videos/vid.mp4";
 import {Link, useParams} from "react-router-dom";
 import moment from "moment";
 import LikeWatchLaterSaveButtons from "./LikeWatchLaterSaveButtons";
 import Comments from "../../Component/Comments/Comments";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {viewVideo} from "../../Action/Video.js";
 
 const VideoPage = () => {
-  const videoList = [
-    {
-      _id: 1,
-      video_src: video1,
-      channel: "abc",
-      title: "video 1",
-      uploader: "abc",
-      description: "Description of video 1",
-    },
-    {
-      _id: 2,
-      video_src: video1,
-      channel: "abc",
-      title: "video 2",
-      uploader: "abc",
-      description: "Description of video 2",
-    },
-    {
-      _id: 3,
-      video_src: video1,
-      channel: "abc",
-      title: "video 3",
-      uploader: "abc",
-      description: "Description of video 3",
-    },
-    {
-      _id: 4,
-      video_src: video1,
-      channel: "abc",
-      title: "video 4",
-      uploader: "abc",
-      description: "Description of video 4",
-    },
-  ];
-  const currentUser = useSelector((state) => state.currentUserReducer);
   const {vid} = useParams();
-  const vidNumber = parseInt(vid, 10);
-  const vv = videoList?.filter((q) => q._id === vidNumber)[0];
+  const dispatch = useDispatch();
+  const videoList = useSelector((state) => state.videoReducer);
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  const vv = videoList?.data?.filter((q) => q._id === vid)[0];
+  const handleViews = () => {
+    dispatch(viewVideo({id: vid}));
+  };
+  useEffect(() => {
+    handleViews();
+  }, []);
   return (
     <>
       <div className="Container_VideoPage">
         <div className="Container2_VideoPage">
           <div className="Video_Display_Screen_VideoPage">
             <video
-              src={video1}
+              src={`http://localhost:5000/${vv?.file_path}`}
               className="Video_ShowVideo_VideoPage"
               controls
             ></video>
@@ -62,7 +35,7 @@ const VideoPage = () => {
                 <div className="Views_Date_Buttons_VideoPage">
                   <div className="Views_VideoPage">
                     {vv?.views} views <div className="Dot"></div>{" "}
-                    {moment(vv?.createDate).fromNow()}
+                    {moment(vv?.createdAt).fromNow()}
                   </div>
                   <LikeWatchLaterSaveButtons vv={vv} vid={vid} />
                 </div>

@@ -4,13 +4,16 @@ import {BsMicFill} from "react-icons/bs";
 import {FaSearch} from "react-icons/fa";
 import SearchList from "./SearchList";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchList, setSearchList] = useState(false);
-  const titleArray = ["Movies", "Animes", "Series"].filter((q) =>
-    q.toUpperCase().includes(searchQuery.toUpperCase())
-  );
+  const titleArray = useSelector((state) => state.videoReducer)
+    ?.data?.filter((q) =>
+      q.video_title.toUpperCase().includes(searchQuery?.toUpperCase())
+    )
+    .map((m) => m?.video_title);
   return (
     <>
       <div className="SearchBar_Container">

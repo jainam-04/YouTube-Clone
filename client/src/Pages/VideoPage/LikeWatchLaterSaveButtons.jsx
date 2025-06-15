@@ -13,9 +13,11 @@ import {
   RiPlayListAddFill,
   RiShareForwardLine,
 } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {likeVideo} from "../../Action/Video.js";
 
 const LikeWatchLaterSaveButtons = ({vv, vid}) => {
+  const dispatch = useDispatch();
   const [saveVideo, setSaveVideo] = useState(false);
   const [dislikeButton, setDislikeButton] = useState(false);
   const [likeButton, setLikeButton] = useState(false);
@@ -31,24 +33,29 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
       alert("Please login to save video");
     }
   };
-  const toggleLikeVideo = () => {
+  const toggleLikeVideo = (e, like) => {
     if (currentUser) {
       if (likeButton) {
         setLikeButton(false);
+        dispatch(likeVideo({id: vid, like: like - 1}));
       } else {
         setLikeButton(true);
+        dispatch(likeVideo({id: vid, like: like + 1}));
         setDislikeButton(false);
       }
     } else {
       alert("Please login to save video");
     }
   };
-  const toggleDislikeVideo = () => {
+  const toggleDislikeVideo = (e, like) => {
     if (currentUser) {
       if (dislikeButton) {
         setDislikeButton(false);
       } else {
         setDislikeButton(true);
+        if (likeButton) {
+          dispatch(likeVideo({id: vid, like: like - 1}));
+        }
         setLikeButton(false);
       }
     } else {
@@ -62,7 +69,10 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
           <BsThreeDots />
         </div>
         <div className="Button_VideoPage">
-          <div className="Like_VideoPage" onClick={(e) => toggleLikeVideo(e)}>
+          <div
+            className="Like_VideoPage"
+            onClick={(e) => toggleLikeVideo(e, vv.like)}
+          >
             {likeButton ? (
               <>
                 <AiFillLike size={22} className="Buttons_VideoPage" />
@@ -76,7 +86,7 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
           </div>
           <div
             className="Like_VideoPage"
-            onClick={(e) => toggleDislikeVideo(e)}
+            onClick={(e) => toggleDislikeVideo(e, vv.like)}
           >
             {dislikeButton ? (
               <>
@@ -87,7 +97,7 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
                 <AiOutlineDislike size={22} className="Buttons_VideoPage" />
               </>
             )}
-            <b>{vv.dislike}</b>
+            <b>{vv.like}</b>
           </div>
           <div className="Like_VideoPage" onClick={(e) => toggleSavedVideo(e)}>
             {saveVideo ? (

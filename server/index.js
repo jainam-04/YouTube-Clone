@@ -4,6 +4,8 @@ import dotenv from "dotenv"
 import cors from "cors"
 import bodyParser from "body-parser"
 import userRoutes from "./Routes/User.js"
+import videoRoutes from "./Routes/Video.js";
+import path from "path";
 
 dotenv.config()
 const app = express()
@@ -18,10 +20,12 @@ const port = process.env.port || 5000
 app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`)
 })
+app.use("/user", userRoutes)
+app.use("/uploads", express.static(path.join("uploads")))
+app.use("/video", videoRoutes)
 const DB_URL = process.env.DB_URL
 mongoose.connect(DB_URL).then(() => {
       console.log("MongoDB Database Connected!")
 }).catch((error) => {
       console.log(error)
 })
-app.use("/user", userRoutes)

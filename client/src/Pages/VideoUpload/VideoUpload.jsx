@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import "./VideoUpload.css";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
-import { useSelector } from "react-redux";
-
+import {useSelector, useDispatch} from "react-redux";
+import {uploadVideo} from "../../Action/Video.js";
 const VideoUpload = ({setVideoUploadPage}) => {
   const [title, setTitle] = useState("");
   const [videoFile, setVideoFile] = useState("");
@@ -10,7 +10,19 @@ const VideoUpload = ({setVideoUploadPage}) => {
   const handleSetVideoFile = (e) => {
     setVideoFile(e.target.files[0]);
   };
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const fileOption = {
+    onUploadProgress: (progressEvent) => {
+      const {loaded, total} = progressEvent;
+      const percentage = Math.floor(((loaded / 1000) * 100) / (total / 1000));
+      setProgress(percentage);
+      if (percentage === 100) {
+        setTimeout(function () {}, 3000);
+        setVideoUploadPage(false);
+      }
+    },
+  };
   const uploadVideoFile = () => {
     if (!title) {
       alert("Please enter title of the video!!");
@@ -24,8 +36,11 @@ const VideoUpload = ({setVideoUploadPage}) => {
       fileData.append("title", title);
       fileData.append("channel", currentUser?.result?._id);
       fileData.append("uploader", currentUser?.result?.name);
+      console.log(videoFile);
+      dispatch(uploadVideo({fileData:fileData, fileOption:fileOption}));
     }
   };
+
   return (
     <>
       <div className="Container_VideoUpload">
@@ -43,6 +58,7 @@ const VideoUpload = ({setVideoUploadPage}) => {
               placeholder="Enter title of your video"
               maxLength={30}
               className="iBox_VideoUpload"
+              onChange={(e) => setTitle(e.target.value)}
             />
             <label
               htmlFor="file"

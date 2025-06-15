@@ -9,6 +9,7 @@ import CreateEditChannel from './Pages/Channel/CreateEditChannel';
 import VideoUpload from './Pages/VideoUpload/VideoUpload';
 import { useDispatch } from 'react-redux';
 import { fetchAllChannels } from './Action/ChannelUser';
+import { getAllVideos } from "./Action/Video.js"
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -29,10 +30,11 @@ function App() {
   const [editCreateChannelButton, setEditCreateChannelButton] = useState(false);
   const [videoUploadPage, setVideoUploadPage] = useState(false);
   const dispatch = useDispatch();
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchAllChannels())
+    dispatch(getAllVideos())
   }, [dispatch])
-  
+
   return (
     <Router>
       {videoUploadPage && <VideoUpload setVideoUploadPage={setVideoUploadPage} />}
