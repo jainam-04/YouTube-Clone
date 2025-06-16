@@ -2,10 +2,17 @@ import React from "react";
 import "./WHL.css";
 import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import WHLVideoList from "./WHLVideoList";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteHistory} from "../../Action/History";
 
 const WHL = ({page, videoList}) => {
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const handleClearHistory = () => {
+    if (currentUser) {
+      dispatch(deleteHistory({user_id: currentUser?.result?._id}));
+    }
+  };
   return (
     <>
       <div className="Container_Pages_App">
@@ -15,7 +22,12 @@ const WHL = ({page, videoList}) => {
             <div className="Box_WHL LeftSide_WHL">
               <b>Your {page} shown here</b>
               {page === "History" && (
-                <div className="Clear_History_Button">Clear History</div>
+                <div
+                  className="Clear_History_Button"
+                  onClick={() => handleClearHistory()}
+                >
+                  Clear History
+                </div>
               )}
             </div>
             <div className="RightSide_WHL">
@@ -23,7 +35,7 @@ const WHL = ({page, videoList}) => {
               <div className="WHL_List">
                 <WHLVideoList
                   page={page}
-                  currentUser={currentUser}
+                  currentUser={currentUser?.result?._id}
                   videoList={videoList}
                 />
               </div>

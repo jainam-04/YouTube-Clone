@@ -33,28 +33,28 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
       alert("Please login to save video");
     }
   };
-  const toggleLikeVideo = (e, like) => {
+  const toggleLikeVideo = (e, lk) => {
     if (currentUser) {
       if (likeButton) {
         setLikeButton(false);
-        dispatch(likeVideo({id: vid, like: like - 1}));
+        dispatch(likeVideo({id: vid, like: lk - 1}));
       } else {
         setLikeButton(true);
-        dispatch(likeVideo({id: vid, like: like + 1}));
+        dispatch(likeVideo({id: vid, like: lk + 1}));
         setDislikeButton(false);
       }
     } else {
       alert("Please login to save video");
     }
   };
-  const toggleDislikeVideo = (e, like) => {
+  const toggleDislikeVideo = (e, lk) => {
     if (currentUser) {
       if (dislikeButton) {
         setDislikeButton(false);
       } else {
         setDislikeButton(true);
         if (likeButton) {
-          dispatch(likeVideo({id: vid, like: like - 1}));
+          dispatch(likeVideo({id: vid, like: lk - 1}));
         }
         setLikeButton(false);
       }
@@ -71,7 +71,7 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
         <div className="Button_VideoPage">
           <div
             className="Like_VideoPage"
-            onClick={(e) => toggleLikeVideo(e, vv.like)}
+            onClick={(e) => toggleLikeVideo(e, vv?.like)}
           >
             {likeButton ? (
               <>
@@ -82,7 +82,7 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
                 <AiOutlineLike size={22} className="Buttons_VideoPage" />
               </>
             )}
-            <b>{vv.like}</b>
+            <b>{vv?.like}</b>
           </div>
           <div
             className="Like_VideoPage"
@@ -97,7 +97,7 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
                 <AiOutlineDislike size={22} className="Buttons_VideoPage" />
               </>
             )}
-            <b>{vv.like}</b>
+            <b>DISLIKE</b>
           </div>
           <div className="Like_VideoPage" onClick={(e) => toggleSavedVideo(e)}>
             {saveVideo ? (

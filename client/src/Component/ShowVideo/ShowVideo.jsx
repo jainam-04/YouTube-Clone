@@ -7,7 +7,10 @@ const ShowVideo = ({vid}) => {
   return (
     <>
       <Link to={`/videoPage/${vid._id}`}>
-        <video src={vid.video_src} className="Video_ShowVideo" />
+        <video
+          src={`http://localhost:5000/${vid?.file_path}`}
+          className="Video_ShowVideo"
+        />
       </Link>
       <div className="Video_Description">
         <div className="Channel_Logo_App">
@@ -22,7 +25,7 @@ const ShowVideo = ({vid}) => {
           <pre className="Video_Views_UploadTime">
             {vid?.views} views
             <div className="Dot"></div>
-            {moment(vid?.createDate).fromNow()}
+            {moment(vid?.createdAt).fromNow()}
           </pre>
         </div>
       </div>

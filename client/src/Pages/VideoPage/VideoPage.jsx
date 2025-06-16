@@ -6,6 +6,7 @@ import LikeWatchLaterSaveButtons from "./LikeWatchLaterSaveButtons";
 import Comments from "../../Component/Comments/Comments";
 import {useDispatch, useSelector} from "react-redux";
 import {viewVideo} from "../../Action/Video.js";
+import {addToHistory} from "../../Action/History.js";
 
 const VideoPage = () => {
   const {vid} = useParams();
@@ -16,7 +17,18 @@ const VideoPage = () => {
   const handleViews = () => {
     dispatch(viewVideo({id: vid}));
   };
+  const handleHistory = () => {
+    dispatch(
+      addToHistory({
+        video_id: vid,
+        viewer: currentUser?.result?._id,
+      })
+    );
+  };
   useEffect(() => {
+    if (currentUser) {
+      handleHistory();
+    }
     handleViews();
   }, []);
   return (
@@ -52,7 +64,7 @@ const VideoPage = () => {
                 <h2>
                   <u>Comments</u>
                 </h2>
-                <Comments video_id={vv._id} />
+                <Comments video_id={vv?._id} />
               </div>
             </div>
           </div>

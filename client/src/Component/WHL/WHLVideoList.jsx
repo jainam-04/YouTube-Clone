@@ -6,10 +6,15 @@ const WHLVideoList = ({page, currentUser, videoList}) => {
     <>
       {currentUser ? (
         <>
-          {videoList
-            ?.slice()
+          {videoList?.data
+            ?.filter((q) => q?.viewer === currentUser)  
+            .reverse()
             .map((m) => {
-              return <ShowVideoList video_id={m?._id} key={m?._id} />;
+              return (
+                <>
+                  <ShowVideoList video_id={m?.video_id} key={m?._id} />
+                </>
+              );
             })}
         </>
       ) : (

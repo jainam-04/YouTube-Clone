@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { fetchAllChannels } from './Action/ChannelUser.js';
 import { getAllVideos } from "./Action/Video.js"
 import { getAllComments } from './Action/Comments.js';
+import { getAllHistory } from './Action/History.js';
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -35,6 +36,7 @@ function App() {
     dispatch(fetchAllChannels())
     dispatch(getAllVideos())
     dispatch(getAllComments())
+    dispatch(getAllHistory())
   }, [dispatch])
 
   return (

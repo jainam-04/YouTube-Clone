@@ -21,3 +21,7 @@ export const postComment = (commentData) => API.post("/comment/post", commentDat
 export const deleteComment = (id) => API.delete(`/comment/delete/${id}`);
 export const editComment = (id, commentBody) => API.patch(`/comment/edit/${id}`, { commentBody });
 export const getAllComments = () => API.get("/comment/get");
+
+export const addToHistory = (historyData) => API.post("/video/history", historyData);
+export const getAllHistory = () => API.get("/video/get_all_history");
+export const deleteHistory = (user_id) => API.delete(`/video/delete_history/${user_id}`);
