@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import "./Comments.css";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {editComment, deleteComment} from "../../Action/Comments.js";
 
 const DisplayComments = ({
   cid,
@@ -10,6 +11,7 @@ const DisplayComments = ({
   comment_body,
   user_commented,
 }) => {
+  const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
   const [commentBody, setCommentBody] = useState("");
   const [commentId, setCommentId] = useState("");
@@ -19,11 +21,32 @@ const DisplayComments = ({
     setCommentId(cmtid);
     setCommentBody(cmtbody);
   };
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    if (!commentBody) {
+      alert("Please type your comment...");
+    } else {
+      dispatch(
+        editComment({
+          id: commentId,
+          commentBody: commentBody,
+        })
+      );
+      setCommentBody("");
+    }
+    setEdit(false);
+  };
+  const handleDelete = (id) => {
+    dispatch(deleteComment(id));
+  };
+
   return (
     <>
       {edit ? (
-        <>
-          <form className="Comments_Submit_Form_Comments">
+          <form
+            className="Comments_Submit_Form_Comments"
+            onSubmit={handleOnSubmit}
+          >
             <input
               type="text"
               className="Comment_iBox"
@@ -37,7 +60,6 @@ const DisplayComments = ({
               value="Change"
             />
           </form>
-        </>
       ) : (
         <p className="Comment_Body">{comment_body}</p>
       )}
@@ -48,7 +70,7 @@ const DisplayComments = ({
       {currentUser?.result?._id === userid && (
         <p className="Edit_Delete_DisplayComment">
           <i onClick={() => handleEdit(cid, comment_body)}>Edit</i>
-          <i>Delete</i>
+          <i onClick={() => handleDelete(cid)}>Delete</i>
         </p>
       )}
     </>

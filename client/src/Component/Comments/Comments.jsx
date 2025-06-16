@@ -1,39 +1,28 @@
 import React, {useState} from "react";
 import "./Comments.css";
 import DisplayComments from "./DisplayComments";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {postComment} from "../../Action/Comments";
 
 const Comments = ({video_id}) => {
+  const dispatch = useDispatch();
   const [commentText, setCommentText] = useState("");
   const currentUser = useSelector((state) => state.currentUserReducer);
-  const commentList = [
-    {
-      _id: 1,
-      comment_body: "hello",
-      user_commented: "abc",
-    },
-    {
-      _id: 2,
-      comment_body: "hello",
-      user_commented: "abc",
-    },
-    {
-      _id: 3,
-      comment_body: "hello",
-      user_commented: "abc",
-    },
-    {
-      _id: 4,
-      comment_body: "hello",
-      user_commented: "abc",
-    },
-  ];
+  const commentList = useSelector((state) => state.commentReducer);
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (currentUser) {
       if (!commentText) {
         alert("Please type your comment!!");
       } else {
+        dispatch(
+          postComment({
+            video_id: video_id,
+            user_id: currentUser?.result?._id,
+            commentBody: commentText,
+            user_commented: currentUser?.result?.name,
+          })
+        );
         setCommentText("");
       }
     } else {
@@ -42,7 +31,7 @@ const Comments = ({video_id}) => {
   };
   return (
     <>
-      <form className="Comments_Submit_Form_Comments">
+      <form className="Comments_Submit_Form_Comments" onSubmit={handleOnSubmit}>
         <input
           type="text"
           onChange={(e) => setCommentText(e.target.value)}
@@ -57,20 +46,18 @@ const Comments = ({video_id}) => {
         />
       </form>
       <div className="Display_Comment_Container">
-        {commentList
-          ?.filter((q) => video_id === q?._id)
+        {commentList?.data
+          ?.filter((q) => video_id === q?.video_id)
           .reverse()
           .map((m) => {
             return (
-              <>
-                <DisplayComments
-                  cid={m._id}
-                  userid={m.userid}
-                  comment_body={m.comment_body}
-                  comment_on={m.comment_on}
-                  user_commented={m.user_commented}
-                />
-              </>
+              <DisplayComments
+                cid={m._id}
+                userid={m.user_id}
+                comment_body={m.comment_body}
+                comment_on={m.commented_on}
+                user_commented={m.user_commented}
+              />
             );
           })}
       </div>

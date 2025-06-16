@@ -6,6 +6,7 @@ import bodyParser from "body-parser"
 import userRoutes from "./Routes/User.js"
 import videoRoutes from "./Routes/Video.js";
 import path from "path";
+import commentRoutes from "./Routes/Comments.js";
 
 dotenv.config()
 const app = express()
@@ -23,6 +24,7 @@ app.listen(port, () => {
 app.use("/user", userRoutes)
 app.use("/uploads", express.static(path.join("uploads")))
 app.use("/video", videoRoutes)
+app.use("/comment", commentRoutes)
 const DB_URL = process.env.DB_URL
 mongoose.connect(DB_URL).then(() => {
       console.log("MongoDB Database Connected!")
