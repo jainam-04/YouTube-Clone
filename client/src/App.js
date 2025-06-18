@@ -12,6 +12,8 @@ import { fetchAllChannels } from './Action/ChannelUser.js';
 import { getAllVideos } from "./Action/Video.js"
 import { getAllComments } from './Action/Comments.js';
 import { getAllHistory } from './Action/History.js';
+import { getAllLikedVideo } from './Action/LikedVideo.js';
+import { getAllWatchLater } from './Action/WatchLater.js';
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -37,6 +39,8 @@ function App() {
     dispatch(getAllVideos())
     dispatch(getAllComments())
     dispatch(getAllHistory())
+    dispatch(getAllLikedVideo())
+    dispatch(getAllWatchLater())
   }, [dispatch])
 
   return (

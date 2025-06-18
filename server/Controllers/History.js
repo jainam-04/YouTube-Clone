@@ -1,10 +1,13 @@
 import History from "../Models/History.js";
 
 export const historyController = async (req, res) => {
-      const historyData = req.body;
-      const addToHistory = new History(historyData);
+      const { video_id, viewer } = req.body;
       try {
-            await addToHistory.save();
+            const existingHistory = await History.findOneAndUpdate(
+                  { video_id, viewer },
+                  { liked_on: Date.now() },
+                  { new: true, upsert: true }
+            );
             res.status(200).json("History added...");
       } catch (error) {
             res.status(400).json(error.message);

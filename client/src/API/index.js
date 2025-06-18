@@ -25,3 +25,11 @@ export const getAllComments = () => API.get("/comment/get");
 export const addToHistory = (historyData) => API.post("/video/history", historyData);
 export const getAllHistory = () => API.get("/video/get_all_history");
 export const deleteHistory = (user_id) => API.delete(`/video/delete_history/${user_id}`);
+
+export const addToLikedVideo = (likedVideoData) => API.post("/video/liked_video", likedVideoData);
+export const getAllLikedVideo = () => API.get("/video/get_all_liked_video");
+export const deleteLikedVideo = (video_id, viewer) => API.delete(`/video/delete_liked_video/${video_id}/${viewer}`);
+
+export const addToWatchLater = (watchLaterData) => API.post("/video/watch_later", watchLaterData);
+export const getAllWatchLater = () => API.get("/video/get_all_watch_later");
+export const deleteWatchLater = (video_id, viewer) => API.delete(`/video/delete_watch_later/${video_id}/${viewer}`);

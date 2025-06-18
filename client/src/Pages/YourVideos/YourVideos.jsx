@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 
 const YourVideos = () => {
   const currentUser = useSelector((state) => state.currentUserReducer);
-  const YourVideosVideoList = useSelector((state) => state.videoreducer)
+  const YourVideosVideoList = useSelector((state) => state.videoReducer)
     ?.data?.filter((q) => q.video_channel === currentUser?.result?._id)
     .reverse();
   return (

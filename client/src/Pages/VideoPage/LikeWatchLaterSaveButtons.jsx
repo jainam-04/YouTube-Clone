@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./LikeWatchLaterSaveButtons.css";
 import {BsThreeDots} from "react-icons/bs";
 import {
@@ -15,6 +15,8 @@ import {
 } from "react-icons/ri";
 import {useDispatch, useSelector} from "react-redux";
 import {likeVideo} from "../../Action/Video.js";
+import {addToLikedVideo, deleteLikedVideo} from "../../Action/LikedVideo.js";
+import {addToWatchLater, deleteWatchLater} from "../../Action/WatchLater.js";
 
 const LikeWatchLaterSaveButtons = ({vv, vid}) => {
   const dispatch = useDispatch();
@@ -22,12 +24,32 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
   const [dislikeButton, setDislikeButton] = useState(false);
   const [likeButton, setLikeButton] = useState(false);
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const likedVideoList = useSelector((state) => state.likedVideoReducer);
+  const watchLaterList = useSelector((state) => state.watchLaterReducer);
+  useEffect(() => {
+    likedVideoList?.data
+      ?.filter(
+        (q) => q.video_id === vid && q.viewer === currentUser?.result?._id
+      )
+      .map((m) => setLikeButton(true));
+    watchLaterList?.data
+      ?.filter(
+        (q) => q.video_id === vid && q.viewer === currentUser?.result?._id
+      )
+      .map((m) => setSaveVideo(true));
+  }, []);
   const toggleSavedVideo = () => {
     if (currentUser) {
       if (saveVideo) {
         setSaveVideo(false);
+        dispatch(
+          deleteWatchLater({video_id: vid, viewer: currentUser?.result?._id})
+        );
       } else {
         setSaveVideo(true);
+        dispatch(
+          addToWatchLater({video_id: vid, viewer: currentUser?.result?._id})
+        );
       }
     } else {
       alert("Please login to save video");
@@ -38,9 +60,15 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
       if (likeButton) {
         setLikeButton(false);
         dispatch(likeVideo({id: vid, like: lk - 1}));
+        dispatch(
+          deleteLikedVideo({video_id: vid, viewer: currentUser?.result?._id})
+        );
       } else {
         setLikeButton(true);
         dispatch(likeVideo({id: vid, like: lk + 1}));
+        dispatch(
+          addToLikedVideo({video_id: vid, viewer: currentUser?.result?._id})
+        );
         setDislikeButton(false);
       }
     } else {
@@ -55,6 +83,9 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
         setDislikeButton(true);
         if (likeButton) {
           dispatch(likeVideo({id: vid, like: lk - 1}));
+          dispatch(
+            deleteLikedVideo({video_id: vid, viewer: currentUser?.result?._id})
+          );
         }
         setLikeButton(false);
       }
