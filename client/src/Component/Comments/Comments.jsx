@@ -19,7 +19,7 @@ const Comments = ({video_id}) => {
           postComment({
             video_id: video_id,
             user_id: currentUser?.result?._id,
-            commentBody: commentText,
+            comment_body: commentText,
             user_commented: currentUser?.result?.name,
           })
         );
