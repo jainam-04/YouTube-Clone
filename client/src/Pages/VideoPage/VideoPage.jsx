@@ -37,7 +37,7 @@ const VideoPage = () => {
         <div className="Container2_VideoPage">
           <div className="Video_Display_Screen_VideoPage">
             <video
-              src={`http://localhost:5000/${vv?.file_path}`}
+              src={`https://youtube-clone-8mxs.onrender.com/${vv?.file_path.replace(/\\/g, "/")}`}
               className="Video_ShowVideo_VideoPage"
               controls
             ></video>

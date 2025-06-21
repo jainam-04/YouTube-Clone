@@ -22,7 +22,7 @@ app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`)
 })
 app.use("/user", userRoutes)
-app.use("/uploads", express.static(path.join("uploads")))
+app.use("/uploads", express.static(path.join("Uploads")))
 app.use("/video", videoRoutes)
 app.use("/comment", commentRoutes)
 const DB_URL = process.env.DB_URL
