@@ -7,6 +7,7 @@ import Comments from "../../Component/Comments/Comments";
 import {useDispatch, useSelector} from "react-redux";
 import {viewVideo} from "../../Action/Video.js";
 import {addToHistory} from "../../Action/History.js";
+import CustomVideoPlayer from "../../Component/CustomVideoPlayer/CustomVideoPlayer.jsx";
 
 const VideoPage = () => {
   const {vid} = useParams();
@@ -14,6 +15,7 @@ const VideoPage = () => {
   const videoList = useSelector((state) => state.videoReducer);
   const currentUser = useSelector((state) => state.currentUserReducer);
   const vv = videoList?.data?.filter((q) => q._id === vid)[0];
+  const src = `http://localhost:5000/${vv?.file_path.replace(/\\/g, "/")}`;
   const handleViews = () => {
     dispatch(viewVideo({id: vid}));
   };
@@ -36,11 +38,7 @@ const VideoPage = () => {
       <div className="Container_VideoPage">
         <div className="Container2_VideoPage">
           <div className="Video_Display_Screen_VideoPage">
-            <video
-              src={`http://localhost:5000/${vv?.file_path.replace(/\\/g, "/")}`}
-              className="Video_ShowVideo_VideoPage"
-              controls
-            ></video>
+            <CustomVideoPlayer src={src} />
             <div className="Video_Details_VideoPage">
               <div className="Video_Buttons_Title_VideoPage_Container">
                 <p className="Video_Title_VideoPage">{vv?.title}</p>

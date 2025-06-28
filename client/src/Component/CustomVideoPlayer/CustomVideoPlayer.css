@@ -1,0 +1,101 @@
+.Video_Container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Video_Container video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.Controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  gap: 10px;
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.Controls input[type="range"] {
+  accent-color: red;
+  height: 4px;
+  cursor: pointer;
+}
+
+#Seekbar {
+  flex: 1;
+}
+
+#Volume {
+  width: 80px;
+}
+
+button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #ff0;
+}
+
+.Settings_Menu {
+  position: absolute;
+  bottom: 60px;
+  right: 10px;
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  min-width: 100px;
+}
+
+.Settings_Menu strong {
+  color: white;
+  margin: 6px 0 4px;
+  font-size: 13px;
+}
+
+.Settings_Menu button {
+  background: none;
+  color: white;
+  border: none;
+  text-align: left;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.Settings_Menu button:hover {
+  background: #444;
+}
+
+/* ✅ Active speed or quality button */
+.Settings_Menu button.active {
+  background: #f00;
+  color: #fff;
+  font-weight: bold;
+}
