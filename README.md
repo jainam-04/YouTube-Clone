@@ -11,6 +11,7 @@ A full-featured YouTube clone web application where users can sign in, create an
 - [Tech Stack](#-tech-stack)
 - [Installation](#-installation)
 - [Usage](#-usage)
+- [Future Enhancements](#-future-enhancements)
 - [Contributing](#-contributing)
 - [Contact](#-contact)
 
@@ -97,6 +98,20 @@ npm run dev
 3. Upload and manage your videos.
 4. Interact with videos using likes, comments, and save-for-later.
 5. Revisit your activity via History, Liked, or Watch Later sections.
+
+---
+
+## 🛠️ Future Enhancements
+
+1. **Task 1** : Add a video player that supports playing same video at different qualities eg 320p, 480p, 720p, 1080p etc.
+
+2. **Task 2** : Create a feature to upgrade the plan to Bronze, silver and Gold. For free plan user can only watch videos for 5 mins. For Bronze plan user can watch videos for 7 mins. For Silver plan they can watch videos for 10 mins and for gold plan they can watch videos unlimited time. Bronze cost 10rs, silver cost 50rs and gold cost 100rs. We should trigger an email to user once payment is succesful and share an invoice.
+
+3. **Task 3** : Create a feature to download the video on website itself and show it on user profile under download option. We should be able to download only one video per day. If they want to download more than one video they should go for premium plan where they can click on premium option and setup the Razorpay payment gateway for test payment. If the payment is successful they can downlod as much as video possible.
+
+4. **Task 4** : Change the website color or theme according to time of login and location. If we access the website between 10 AM to 12 Pm as well as if the location is south india (Tamil nadu, Kerala, karnataka, Andhra and Telungana) we should keep white theme and for other timing and other states we should keep dark theme. If the user login from southern states(Tamil nadu, Kerala, karnataka, Andhra and Telungana) we should trigger an email for OTP Verification if the user login from other states we should trigger an OTP through mobile number.
+
+5. **Task 5** : Incorporate a feature into the web app that allows users to make video calls to their friends and share screen of youtube website and we should have option to record the video session and save it in local.
 
 ---
 
