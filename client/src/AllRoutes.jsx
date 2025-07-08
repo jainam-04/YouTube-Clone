@@ -9,6 +9,7 @@ import LikedVideos from "./Pages/LikedVideos/LikedVideos";
 import WatchHistory from "./Pages/WatchHistory/WatchHistory";
 import WatchLater from "./Pages/WatchLater/WatchLater";
 import YourVideos from "./Pages/YourVideos/YourVideos";
+import UpgradePlan from "./Pages/UpgradePlan/UpgradePlan";
 
 const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
   return (
@@ -30,6 +31,7 @@ const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
       <Route path="/history" element={<WatchHistory />} />
       <Route path="/watch_later" element={<WatchLater />} />
       <Route path="/your_videos" element={<YourVideos />} />
+      <Route path="/upgrade_plan" element={<UpgradePlan />} />
     </Routes>
   );
 };

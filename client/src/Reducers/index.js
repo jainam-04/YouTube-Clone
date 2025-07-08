@@ -7,6 +7,7 @@ import commentReducer from "./Comments.js"
 import historyReducer from "./History.js"
 import likedVideoReducer from "./LikedVideo.js"
 import watchLaterReducer from "./WatchLater.js"
+import upgradePlanReducer from "./UpgradePlan.js"
 
 export default combineReducers({
       authReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
       commentReducer,
       historyReducer,
       likedVideoReducer,
-      watchLaterReducer
-})
+      watchLaterReducer,
+      upgradePlanReducer
+});

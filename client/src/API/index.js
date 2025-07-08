@@ -10,8 +10,12 @@ API.interceptors.request.use((req) => {
 })
 
 export const login = (authData) => API.post("/user/login", authData);
+
 export const updateChannelData = (id, updateData) => API.patch(`/user/update/${id}`, updateData);
 export const fetchAllChannels = () => API.get("/user/get_all_channels");
+
+export const createOrder = (plan) => API.post("/user/create_order", { plan });
+export const successPayment = (plan, payment_id, user_id) => API.post("/user/success", { plan, payment_id, user_id });
 
 export const uploadVideo = (fileData, fileOption) => API.post("/video/upload_video", fileData, fileOption);
 export const getVideos = () => API.get("/video/get_videos");

@@ -1,0 +1,61 @@
+.Upgrade_Container {
+  flex: 1;
+  padding: 20px;
+  color: white;
+  background-color: #121212;
+  min-height: 100vh;
+}
+
+.Upgrade_Container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.Plans_Wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.Plan_Card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 12px;
+  width: 180px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Plan_Card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.Plan_Card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffcc00;
+}
+
+.Plan_Card p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+.Plan_Card button {
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff0000;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.Plan_Card button:hover {
+  background-color: #e60000;
+}

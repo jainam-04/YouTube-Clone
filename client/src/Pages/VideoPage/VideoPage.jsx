@@ -15,7 +15,7 @@ const VideoPage = () => {
   const videoList = useSelector((state) => state.videoReducer);
   const currentUser = useSelector((state) => state.currentUserReducer);
   const vv = videoList?.data?.filter((q) => q._id === vid)[0];
-  const src = `http://localhost:5000/${vv?.file_path.replace(/\\/g, "/")}`;
+  const src = `http://localhost:5000/${vv?.file_path}`.replace(/\\/g, "/");
   const handleViews = () => {
     dispatch(viewVideo({id: vid}));
   };

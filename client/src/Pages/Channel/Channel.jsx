@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 
 const Channel = ({setEditCreateChannelButton, setVideoUploadPage}) => {
   const {cid} = useParams();
-  const videoList = useSelector((state) => state.vieoreducer)
+  const videoList = useSelector((state) => state.videoreducer)
     ?.data?.filter((q) => q.video_channel === cid)
     .reverse();
   return (

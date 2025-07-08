@@ -14,7 +14,18 @@ const userSchema = mongoose.Schema({
       joined_on: {
             type: Date,
             default: Date.now
-      }
+      },
+      plan: {
+            type: String,
+            enum: ["free", "bronze", "silver", "gold"],
+            default: "free"
+      },
+      payment_history: [{
+            plan: String,
+            amount: Number,
+            date: Date,
+            invoice_id: String
+      }]
 })
 
 export default mongoose.model("User", userSchema)

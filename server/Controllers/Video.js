@@ -43,7 +43,7 @@ export const uploadVideo = async (req, res) => {
                         `${outputDir}/stream_%v/playlist.m3u8`
                   ]);
                   ffmpeg.stderr.on("data", (data) => {
-                        console.log(`FFmpeg error: ${data}`);
+                        console.log(`[FFmpeg]: ${data}`);
                   });
                   ffmpeg.on("close", async (code) => {
                         if (code !== 0) {

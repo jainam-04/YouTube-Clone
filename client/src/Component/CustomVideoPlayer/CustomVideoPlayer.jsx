@@ -1,6 +1,14 @@
 import React, {useEffect, useRef, useState} from "react";
 import "./CustomVideoPlayer.css";
 import Hls from "hls.js";
+import {useSelector} from "react-redux";
+
+const planDurations = {
+  free: 5 * 60,
+  bronze: 7 * 60,
+  silver: 10 * 60,
+  gold: Infinity,
+};
 
 const CustomVideoPlayer = ({src}) => {
   const videoRef = useRef();
@@ -14,6 +22,9 @@ const CustomVideoPlayer = ({src}) => {
   const [fullscreen, setFullscreen] = useState(false);
   const [selectedQuality, setSelectedQuality] = useState("auto");
   const [availableQualities, setAvailableQualities] = useState([]);
+
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  const userPlan = currentUser?.result?.plan;
 
   const formatTime = (sec) => {
     const minutes = Math.floor(sec / 60);
@@ -53,7 +64,18 @@ const CustomVideoPlayer = ({src}) => {
   useEffect(() => {
     const video = videoRef.current;
 
-    const updateTime = () => setCurrentTime(video.currentTime);
+    const updateTime = () => {
+      setCurrentTime(video.currentTime);
+      const maxAllowedTime = planDurations[userPlan];
+      if (video.currentTime >= maxAllowedTime) {
+        video.pause();
+        alert(
+          `Your current plan ${userPlan} allows watching only ${formatTime(
+            maxAllowedTime
+          )} of the video.`
+        );
+      }
+    };
     const setMeta = () => setDuration(video.duration);
 
     video.addEventListener("loadedmetadata", setMeta);
@@ -98,7 +120,7 @@ const CustomVideoPlayer = ({src}) => {
       video.removeEventListener("timeupdate", updateTime);
       video.removeEventListener("loadedmetadata", setMeta);
     };
-  }, []);
+  }, [userPlan]);
 
   const togglePlay = () => {
     const video = videoRef.current;
