@@ -7,6 +7,7 @@ import upload from "../Helper/FileHelper.js";
 import { historyController, deleteHistory, getAllHistoryController } from "../Controllers/History.js";
 import { getAllWatchLaterController, deleteWatchLater, watchLaterController } from "../Controllers/WatchLater.js";
 import { likedVideosController, getAllLikedVideos, deleteLikedVideo } from "../Controllers/LikedVideos.js";
+import { downloadedVideosController, getDownloadedVideos, deleteDownloadedVideos } from "../Controllers/DownloadedVideos.js";
 
 const routes = express.Router();
 
@@ -26,5 +27,9 @@ routes.delete("/delete_watch_later/:video_id/:viewer", auth, deleteWatchLater);
 routes.post("/liked_video", auth, likedVideosController);
 routes.get("/get_all_liked_video", getAllLikedVideos);
 routes.delete("/delete_liked_video/:video_id/:viewer", auth, deleteLikedVideo);
+
+routes.post("/add_downloaded_videos", auth, downloadedVideosController);
+routes.get("/get_downloaded_videos/:viewer", getDownloadedVideos);
+routes.delete("/delete_downloaded_videos/:video_id/:viewer", auth, deleteDownloadedVideos);
 
 export default routes;

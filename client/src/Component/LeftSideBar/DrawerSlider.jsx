@@ -6,11 +6,12 @@ import {
   MdOutlineVideoLibrary,
   MdOutlineWatchLater,
   MdSubscriptions,
+  MdDownload,
+  MdWorkspacePremium,
 } from "react-icons/md";
 import {FaHistory} from "react-icons/fa";
 import {NavLink} from "react-router-dom";
 import shorts from "./shorts.png";
-import {GrUpgrade} from "react-icons/gr"
 
 const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
   return (
@@ -112,9 +113,19 @@ const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
                 <div className="Text_SideBar_Icon">Liked Videos</div>
               </p>
             </NavLink>
+            <NavLink to={"/downloaded_videos"} className="Icon_SideBar_Div">
+              <p>
+                <MdDownload
+                  size={22}
+                  className="Icon_SideBar"
+                  style={{margin: "auto 0.7rem"}}
+                />
+                <div className="Text_SideBar_Icon">Downloaded Videos</div>
+              </p>
+            </NavLink>
             <NavLink to={"/upgrade_plan"} className="Icon_SideBar_Div">
               <p>
-                <GrUpgrade
+                <MdWorkspacePremium
                   size={22}
                   className="Icon_SideBar"
                   style={{margin: "auto 0.7rem"}}

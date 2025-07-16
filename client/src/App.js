@@ -7,13 +7,14 @@ import AllRoutes from "./AllRoutes";
 import DrawerSlider from "../src/Component/LeftSideBar/DrawerSlider"
 import CreateEditChannel from './Pages/Channel/CreateEditChannel';
 import VideoUpload from './Pages/VideoUpload/VideoUpload';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllChannels } from './Action/ChannelUser.js';
 import { getAllVideos } from "./Action/Video.js"
 import { getAllComments } from './Action/Comments.js';
 import { getAllHistory } from './Action/History.js';
 import { getAllLikedVideo } from './Action/LikedVideo.js';
 import { getAllWatchLater } from './Action/WatchLater.js';
+import { getDownloadedVideos } from './Action/DownloadedVideos.js';
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -34,6 +35,8 @@ function App() {
   const [editCreateChannelButton, setEditCreateChannelButton] = useState(false);
   const [videoUploadPage, setVideoUploadPage] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector(state => state.currentUserReducer);
+  const viewer = user?.result?._id;
   useEffect(() => {
     dispatch(fetchAllChannels())
     dispatch(getAllVideos())
@@ -41,7 +44,10 @@ function App() {
     dispatch(getAllHistory())
     dispatch(getAllLikedVideo())
     dispatch(getAllWatchLater())
-  }, [dispatch])
+    if (viewer) {
+      dispatch(getDownloadedVideos(viewer));
+    }
+  }, [dispatch, viewer]);
 
   return (
     <Router>

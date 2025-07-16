@@ -17,6 +17,9 @@ export const fetchAllChannels = () => API.get("/user/get_all_channels");
 export const createOrder = (plan) => API.post("/user/create_order", { plan });
 export const successPayment = (plan, payment_id, user_id) => API.post("/user/success", { plan, payment_id, user_id });
 
+export const createOrderForDownloads = (premium_plan) => API.post("/user/create_order_downloads", { premium_plan });
+export const successPaymentForDownloads = (premium_plan, payment_id, user_id) => API.post("/user/success_payment_downloads", { premium_plan, payment_id, user_id });
+
 export const uploadVideo = (fileData, fileOption) => API.post("/video/upload_video", fileData, fileOption);
 export const getVideos = () => API.get("/video/get_videos");
 export const likeVideo = (id, like) => API.patch(`/video/like/${id}`, { like });
@@ -38,3 +41,7 @@ export const deleteLikedVideo = (video_id, viewer) => API.delete(`/video/delete_
 export const addToWatchLater = (watchLaterData) => API.post("/video/watch_later", watchLaterData);
 export const getAllWatchLater = () => API.get("/video/get_all_watch_later");
 export const deleteWatchLater = (video_id, viewer) => API.delete(`/video/delete_watch_later/${video_id}/${viewer}`);
+
+export const addDownloadedVideos = ({ video_id, viewer }) => API.post("/video/add_downloaded_videos", { video_id, viewer });
+export const getAllDownloadedVideos = (viewer) => API.get(`/video/get_downloaded_videos/${viewer}`);
+export const deleteDownloadedVideos = (video_id, viewer) => API.delete(`/video/delete_downloaded_videos/${video_id}/${viewer}`);

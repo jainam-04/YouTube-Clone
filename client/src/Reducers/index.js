@@ -8,6 +8,8 @@ import historyReducer from "./History.js"
 import likedVideoReducer from "./LikedVideo.js"
 import watchLaterReducer from "./WatchLater.js"
 import upgradePlanReducer from "./UpgradePlan.js"
+import downloadedVideosReducer from "./DownloadedVideos.js"
+import upgradePlanForDownloadsReducer from "./UpgradePlanForDownloads.js"
 
 export default combineReducers({
       authReducer,
@@ -18,5 +20,7 @@ export default combineReducers({
       historyReducer,
       likedVideoReducer,
       watchLaterReducer,
-      upgradePlanReducer
+      upgradePlanReducer,
+      downloadedVideosReducer,
+      upgradePlanForDownloadsReducer
 });

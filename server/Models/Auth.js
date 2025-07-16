@@ -25,6 +25,23 @@ const userSchema = mongoose.Schema({
             amount: Number,
             date: Date,
             invoice_id: String
+      }],
+      premium_plan: {
+            type: String,
+            enum: ["free", "daily", "weekly", "monthly", "yearly"],
+            default: "free"
+      },
+      premium_plan_start_date: {
+            type: Date
+      },
+      premium_plan_expiry_date: {
+            type: Date
+      },
+      premium_plan_payment_history: [{
+            premium_plan: String,
+            amount: Number,
+            date: Date,
+            invoice_id: String
       }]
 })
 
