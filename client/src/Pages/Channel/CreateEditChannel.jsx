@@ -25,9 +25,14 @@ const CreateEditChannel = ({setEditCreateChannelButton}) => {
         })
       );
       setEditCreateChannelButton(false);
-      setTimeout(() => {
-        dispatch(login({email: currentUser.result.email}));
-      }, 5000);
+      // setTimeout(() => {
+      //   dispatch(
+      //     login({
+      //       email: currentUser.result.email,
+      //       password: currentUser?.result?.password,
+      //     })
+      //   );
+      // }, 5000);
     }
   };
   return (

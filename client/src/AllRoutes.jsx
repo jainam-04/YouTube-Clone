@@ -11,6 +11,7 @@ import WatchLater from "./Pages/WatchLater/WatchLater";
 import YourVideos from "./Pages/YourVideos/YourVideos";
 import UpgradePlan from "./Pages/UpgradePlan/UpgradePlan";
 import DownloadedVideos from "./Pages/DownloadedVideos/DownloadedVideos";
+import RegisterAndLogin from "./Pages/RegisterAndLogin/RegisterAndLogin";
 
 const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
   return (
@@ -34,6 +35,7 @@ const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
       <Route path="/your_videos" element={<YourVideos />} />
       <Route path="/upgrade_plan" element={<UpgradePlan />} />
       <Route path="/downloaded_videos" element={<DownloadedVideos />} />
+      <Route path="/auth" element={<RegisterAndLogin />} />
     </Routes>
   );
 };

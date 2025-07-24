@@ -8,20 +8,20 @@ import {setCurrentUser} from "../../Action/CurrentUser";
 
 const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
   const dispatch = useDispatch();
+  // const logout = () => {
+  //   dispatch(setCurrentUser(null));
+  //   localStorage.clear();
+  //   googleLogout();
+  // };
   const logout = () => {
     dispatch(setCurrentUser(null));
     localStorage.clear();
-    googleLogout();
+    setAuthButton(false);
   };
   return (
     <>
-      <div
-        className="Auth_Container"
-        onClick={() => {
-          setAuthButton(false);
-        }}
-      >
-        <div className="Auth_Container2">
+      <div className="Auth_Container" onClick={() => setAuthButton(false)}>
+        <div className="Auth_Container2" onClick={(e) => e.stopPropagation()}>
           <p className="User_Details">
             <div className="Channel_Logo_App">
               <p className="First_Char_Logo_App">
@@ -41,6 +41,7 @@ const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
                   <Link
                     to={`/channel/${user?.result?._id}`}
                     className="Button_Auth"
+                    onClick={() => setAuthButton(false)}
                   >
                     Your Channel
                   </Link>
@@ -52,7 +53,10 @@ const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
                   type="submit"
                   className="Button_Auth"
                   value="Create Your Channel"
-                  onClick={() => setEditCreateChannelButton(true)}
+                  onClick={() => {
+                    setEditCreateChannelButton(true);
+                    setAuthButton(false);
+                  }}
                 />
               </>
             )}

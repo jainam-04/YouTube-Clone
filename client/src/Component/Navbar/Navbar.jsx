@@ -7,54 +7,58 @@ import {IoMdNotificationsOutline} from "react-icons/io";
 import {BiUserCircle} from "react-icons/bi";
 import SearchBar from "./SearchBar/SearchBar";
 import Auth from "../../Pages/Auth/Auth";
-import {googleLogout, useGoogleLogin} from "@react-oauth/google";
-import axios from "axios";
+// import {googleLogout, useGoogleLogin} from "@react-oauth/google";
+// import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {login} from "../../Action/Auth";
+// import {login} from "../../Action/Auth";
 import {setCurrentUser} from "../../Action/CurrentUser";
 import {jwtDecode} from "jwt-decode";
 
 const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
   const [authButton, setAuthButton] = useState(false);
-  const [user, setUser] = useState([]);
-  const [profile, setProfile] = useState([]);
+  // const [user, setUser] = useState([]);
+  // const [profile, setProfile] = useState([]);
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUserReducer);
-  const successLogin = () => {
-    if (profile.email) {
-      dispatch(login({email: profile.email}));
-    }
-  };
-  const google_login = useGoogleLogin({
-    onSuccess: (tokenResponse) => setUser(tokenResponse),
-    onError: (error) => console.log("Login Failed!", error),
-  });
-  useEffect(() => {
-    if (user) {
-      axios
-        .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          setProfile(res.data);
-          successLogin();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [user]);
+  // const successLogin = () => {
+  //   if (profile.email) {
+  //     dispatch(login({email: profile.email}));
+  //   }
+  // };
   const logout = () => {
     dispatch(setCurrentUser(null));
     localStorage.clear();
-    googleLogout();
   };
+  // const google_login = useGoogleLogin({
+  //   onSuccess: (tokenResponse) => setUser(tokenResponse),
+  //   onError: (error) => console.log("Login Failed!", error),
+  // });
+  // useEffect(() => {
+  //   if (user) {
+  //     axios
+  //       .get(
+  //         `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${user.access_token}`,
+  //             Accept: "application/json",
+  //           },
+  //         }
+  //       )
+  //       .then((res) => {
+  //         setProfile(res.data);
+  //         successLogin();
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  // }, [user]);
+  // const logout = () => {
+  //   dispatch(setCurrentUser(null));
+  //   localStorage.clear();
+  //   googleLogout();
+  // };
   useEffect(() => {
     const token = currentUser?.token;
     if (token) {
@@ -112,10 +116,14 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
             </>
           ) : (
             <>
-              <p className="Auth_Button" onClick={() => google_login()}>
+              <Link
+                to={"/auth"}
+                className="Auth_Button"
+                // onClick={() => setAuthButton(true)}
+              >
                 <BiUserCircle size={22} />
                 <b>Sign In</b>
-              </p>
+              </Link>
             </>
           )}
         </div>
