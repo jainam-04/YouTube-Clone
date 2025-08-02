@@ -9,6 +9,10 @@ const userSchema = mongoose.Schema({
             type: String,
             required: true
       },
+      mobile_no: {
+            type: "String",
+            required: true
+      },
       name: {
             type: String
       },
@@ -50,7 +54,17 @@ const userSchema = mongoose.Schema({
             amount: Number,
             date: Date,
             invoice_id: String
-      }]
+      }],
+      otp: {
+            type: String
+      },
+      otp_expire: {
+            type: Date
+      },
+      is_verified: {
+            type: Boolean,
+            default: false
+      }
 })
 
 export default mongoose.model("User", userSchema)

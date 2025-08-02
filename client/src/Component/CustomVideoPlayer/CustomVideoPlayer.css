@@ -1,8 +1,37 @@
+/* Theme Variables Setup */
+.Light_Theme {
+  --video-bg: #f8f8f8;
+  --control-bg: rgba(255, 255, 255, 0.85);
+  --control-color: black;
+  --btn-color: black;
+  --btn-hover: #c00;
+  --menu-bg: #e4e4e4;
+  --menu-border: #aaa;
+  --menu-text: black;
+  --menu-hover: #ccc;
+  --active-bg: #d00;
+  --active-color: white;
+}
+
+.Dark_Theme {
+  --video-bg: #000;
+  --control-bg: rgba(0, 0, 0, 0.6);
+  --control-color: white;
+  --btn-color: white;
+  --btn-hover: #ff0;
+  --menu-bg: #222;
+  --menu-border: #555;
+  --menu-text: white;
+  --menu-hover: #444;
+  --active-bg: #f00;
+  --active-color: white;
+}
+
 .Video_Container {
   position: relative;
   max-width: 960px;
   margin: 0 auto;
-  background-color: #000;
+  background-color: var(--video-bg);
   font-family: Arial, sans-serif;
 
   -webkit-user-select: none;
@@ -24,8 +53,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+  background: var(--control-bg);
+  color: var(--control-color);
   display: flex;
   align-items: center;
   padding: 8px 10px;
@@ -51,21 +80,21 @@
 button {
   background: none;
   border: none;
-  color: white;
+  color: var(--btn-color);
   font-size: 16px;
   cursor: pointer;
 }
 
 button:hover {
-  color: #ff0;
+  color: var(--btn-hover);
 }
 
 .Settings_Menu {
   position: absolute;
   bottom: 60px;
   right: 10px;
-  background: #222;
-  border: 1px solid #555;
+  background: var(--menu-bg);
+  border: 1px solid var(--menu-border);
   border-radius: 6px;
   padding: 10px;
   display: flex;
@@ -75,14 +104,14 @@ button:hover {
 }
 
 .Settings_Menu strong {
-  color: white;
+  color: var(--menu-text);
   margin: 6px 0 4px;
   font-size: 13px;
 }
 
 .Settings_Menu button {
   background: none;
-  color: white;
+  color: var(--menu-text);
   border: none;
   text-align: left;
   padding: 5px 10px;
@@ -92,12 +121,11 @@ button:hover {
 }
 
 .Settings_Menu button:hover {
-  background: #444;
+  background: var(--menu-hover);
 }
 
-/* ✅ Active speed or quality button */
 .Settings_Menu button.active {
-  background: #f00;
-  color: #fff;
+  background: var(--active-bg);
+  color: var(--active-color);
   font-weight: bold;
 }

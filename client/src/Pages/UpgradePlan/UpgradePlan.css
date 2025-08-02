@@ -1,15 +1,37 @@
+.Dark_Theme {
+  --upgrade-bg: #121212;
+  --upgrade-text: #ffffff;
+  --card-bg: #1e1e1e;
+  --card-border: #333;
+  --card-highlight: #ffcc00;
+  --card-subtext: #ccc;
+  --button-bg: #ff0000;
+  --button-hover: #e60000;
+}
+
+.Light_Theme {
+  --upgrade-bg: #f9f9f9;
+  --upgrade-text: #111;
+  --card-bg: #ffffff;
+  --card-border: #ccc;
+  --card-highlight: #d17f00;
+  --card-subtext: #555;
+  --button-bg: #ff4444 !important;
+  --button-hover: #cc0000 !important;
+}
+
 .Upgrade_Container {
   flex: 1;
   padding: 20px;
-  color: white;
-  background-color: #121212;
+  color: var(--upgrade-text);
+  background-color: var(--upgrade-bg);
   min-height: 100vh;
 }
 
 .Upgrade_Container h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: var(--upgrade-text);
 }
 
 .Plans_Wrapper {
@@ -19,8 +41,8 @@
 }
 
 .Plan_Card {
-  background-color: #1e1e1e;
-  border: 1px solid #333;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
   padding: 20px;
   border-radius: 12px;
   width: 180px;
@@ -36,13 +58,13 @@
 .Plan_Card h3 {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #ffcc00;
+  color: var(--card-highlight);
 }
 
 .Plan_Card p {
   font-size: 16px;
   margin-bottom: 15px;
-  color: #ccc;
+  color: var(--card-subtext);
 }
 
 .Plan_Card button {
@@ -50,12 +72,12 @@
   font-size: 14px;
   border: none;
   border-radius: 6px;
-  background-color: #ff0000;
+  background-color: var(--button-bg);
   color: white;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .Plan_Card button:hover {
-  background-color: #e60000;
+  background-color: var(--button-hover);
 }

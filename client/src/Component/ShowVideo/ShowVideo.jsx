@@ -2,10 +2,15 @@ import React from "react";
 import "./ShowVideo.css";
 import moment from "moment";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const ShowVideo = ({vid}) => {
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   return (
-    <>
+    <div className={theme}>
       <Link to={`/videoPage/${vid._id}`}>
         <video
           src={`http://localhost:5000/${vid?.file_path}`}
@@ -29,7 +34,7 @@ const ShowVideo = ({vid}) => {
           </pre>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

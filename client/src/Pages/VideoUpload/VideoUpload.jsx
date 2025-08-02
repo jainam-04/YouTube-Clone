@@ -3,6 +3,8 @@ import "./VideoUpload.css";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {useSelector, useDispatch} from "react-redux";
 import {uploadVideo} from "../../Action/Video.js";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime.js";
+
 const VideoUpload = ({setVideoUploadPage}) => {
   const [title, setTitle] = useState("");
   const [videoFile, setVideoFile] = useState("");
@@ -12,6 +14,8 @@ const VideoUpload = ({setVideoUploadPage}) => {
   };
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const fileOption = {
     onUploadProgress: (progressEvent) => {
       const {loaded, total} = progressEvent;
@@ -37,12 +41,12 @@ const VideoUpload = ({setVideoUploadPage}) => {
       fileData.append("channel", currentUser?.result?._id);
       fileData.append("uploader", currentUser?.result?.name);
       console.log(videoFile);
-      dispatch(uploadVideo({fileData:fileData, fileOption:fileOption}));
+      dispatch(uploadVideo({fileData: fileData, fileOption: fileOption}));
     }
   };
 
   return (
-    <>
+    <div className={theme}>
       <div className="Container_VideoUpload">
         <input
           type="submit"
@@ -99,7 +103,7 @@ const VideoUpload = ({setVideoUploadPage}) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

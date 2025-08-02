@@ -1,64 +1,29 @@
 import React, {useEffect, useState} from "react";
 import logo from "./logo.ico";
 import "./Navbar.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {RiVideoAddLine} from "react-icons/ri";
 import {IoMdNotificationsOutline} from "react-icons/io";
 import {BiUserCircle} from "react-icons/bi";
 import SearchBar from "./SearchBar/SearchBar";
 import Auth from "../../Pages/Auth/Auth";
-// import {googleLogout, useGoogleLogin} from "@react-oauth/google";
-// import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-// import {login} from "../../Action/Auth";
 import {setCurrentUser} from "../../Action/CurrentUser";
 import {jwtDecode} from "jwt-decode";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
   const [authButton, setAuthButton] = useState(false);
-  // const [user, setUser] = useState([]);
-  // const [profile, setProfile] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currentUser = useSelector((state) => state.currentUserReducer);
-  // const successLogin = () => {
-  //   if (profile.email) {
-  //     dispatch(login({email: profile.email}));
-  //   }
-  // };
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const logout = () => {
     dispatch(setCurrentUser(null));
     localStorage.clear();
+    navigate("/");
   };
-  // const google_login = useGoogleLogin({
-  //   onSuccess: (tokenResponse) => setUser(tokenResponse),
-  //   onError: (error) => console.log("Login Failed!", error),
-  // });
-  // useEffect(() => {
-  //   if (user) {
-  //     axios
-  //       .get(
-  //         `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${user.access_token}`,
-  //             Accept: "application/json",
-  //           },
-  //         }
-  //       )
-  //       .then((res) => {
-  //         setProfile(res.data);
-  //         successLogin();
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [user]);
-  // const logout = () => {
-  //   dispatch(setCurrentUser(null));
-  //   localStorage.clear();
-  //   googleLogout();
-  // };
   useEffect(() => {
     const token = currentUser?.token;
     if (token) {
@@ -70,7 +35,7 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("profile"))));
   }, [currentUser?.token, dispatch]);
   return (
-    <>
+    <div className={theme}>
       <div className="Container_Navbar">
         <div className="Burger_Logo_Navbar">
           <div className="Burger" onClick={() => toggleDrawer()}>
@@ -116,11 +81,7 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
             </>
           ) : (
             <>
-              <Link
-                to={"/auth"}
-                className="Auth_Button"
-                // onClick={() => setAuthButton(true)}
-              >
+              <Link to={"/auth"} className="Auth_Button">
                 <BiUserCircle size={22} />
                 <b>Sign In</b>
               </Link>
@@ -135,7 +96,7 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
           user={currentUser}
         />
       )}
-    </>
+    </div>
   );
 };
 

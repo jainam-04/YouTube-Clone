@@ -8,12 +8,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {viewVideo} from "../../Action/Video.js";
 import {addToHistory} from "../../Action/History.js";
 import CustomVideoPlayer from "../../Component/CustomVideoPlayer/CustomVideoPlayer.jsx";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime.js";
 
 const VideoPage = () => {
   const {vid} = useParams();
   const dispatch = useDispatch();
   const videoList = useSelector((state) => state.videoReducer);
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const vv = videoList?.data?.filter((q) => q._id === vid)[0];
   const src = `http://localhost:5000/${vv?.file_path}`.replace(/\\/g, "/");
   const handleViews = () => {
@@ -34,7 +37,7 @@ const VideoPage = () => {
     handleViews();
   }, []);
   return (
-    <>
+    <div className={theme}>
       <div className="Container_VideoPage">
         <div className="Container2_VideoPage">
           <div className="Video_Display_Screen_VideoPage">
@@ -69,7 +72,7 @@ const VideoPage = () => {
           <div className="MoreVideoBar">More Videos</div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

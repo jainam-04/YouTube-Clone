@@ -1,5 +1,14 @@
+.Dark_Theme {
+  --grid-bg: #0f0f0f;
+}
+
+.Light_Theme {
+  --grid-bg: #f9f9f9;
+}
+
 .Container_ShowVideoGrid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: var(--grid-bg);
 }

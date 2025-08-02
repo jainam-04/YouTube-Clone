@@ -15,6 +15,7 @@ import { getAllHistory } from './Action/History.js';
 import { getAllLikedVideo } from './Action/LikedVideo.js';
 import { getAllWatchLater } from './Action/WatchLater.js';
 import { getDownloadedVideos } from './Action/DownloadedVideos.js';
+import changeThemeBasedOnTime from './Utils/ChangeThemeBasedOnTime.js';
 
 function App() {
   const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
@@ -34,9 +35,11 @@ function App() {
   }
   const [editCreateChannelButton, setEditCreateChannelButton] = useState(false);
   const [videoUploadPage, setVideoUploadPage] = useState(false);
+  const [theme, setTheme] = useState("Dark_Theme");
   const dispatch = useDispatch();
   const user = useSelector(state => state.currentUserReducer);
   const viewer = user?.result?._id;
+  const state = user?.result?.state;
   useEffect(() => {
     dispatch(fetchAllChannels())
     dispatch(getAllVideos())
@@ -47,17 +50,20 @@ function App() {
     if (viewer) {
       dispatch(getDownloadedVideos(viewer));
     }
-  }, [dispatch, viewer]);
+    setTheme(changeThemeBasedOnTime(state));
+  }, [dispatch, viewer, state]);
 
   return (
     <Router>
-      {videoUploadPage && <VideoUpload setVideoUploadPage={setVideoUploadPage} />}
-      {editCreateChannelButton && (
-        <CreateEditChannel setEditCreateChannelButton={setEditCreateChannelButton} />
-      )}
-      <Navbar setEditCreateChannelButton={setEditCreateChannelButton} toggleDrawer={toggleDrawer} />
-      <DrawerSlider toggleDrawer={toggleDrawer} toggleDrawerSidebar={toggleDrawerSidebar} />
-      <AllRoutes setEditCreateChannelButton={setEditCreateChannelButton} setVideoUploadPage={setVideoUploadPage} />
+      <div className={`App ${theme}`}>
+        {videoUploadPage && <VideoUpload setVideoUploadPage={setVideoUploadPage} />}
+        {editCreateChannelButton && (
+          <CreateEditChannel setEditCreateChannelButton={setEditCreateChannelButton} />
+        )}
+        <Navbar setEditCreateChannelButton={setEditCreateChannelButton} toggleDrawer={toggleDrawer} />
+        <DrawerSlider toggleDrawer={toggleDrawer} toggleDrawerSidebar={toggleDrawerSidebar} />
+        <AllRoutes setEditCreateChannelButton={setEditCreateChannelButton} setVideoUploadPage={setVideoUploadPage} />
+      </div>
     </Router>
   );
 }

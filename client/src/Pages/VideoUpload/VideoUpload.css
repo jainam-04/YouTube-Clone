@@ -1,6 +1,28 @@
+.Dark_Theme {
+  --overlay-bg: rgba(0, 0, 0, 0.6);
+  --upload-bg: #000000;
+  --text-color: #88857f;
+  --input-color: aliceblue;
+  --button-bg: black;
+  --button-text: white;
+  --button-hover: orange;
+  --box-shadow-color: rgba(142, 142, 142, 0.681);
+}
+
+.Light_Theme {
+  --overlay-bg: rgba(255, 255, 255, 0.6);
+  --upload-bg: #ffffff;
+  --text-color: #333;
+  --input-color: #111;
+  --button-bg: #f0f0f0;
+  --button-text: #000;
+  --button-hover: #ff6600;
+  --box-shadow-color: rgba(100, 100, 100, 0.3);
+}
+
 .Container_VideoUpload {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--overlay-bg);
   width: 100vw;
   height: 100vh;
   z-index: 100;
@@ -8,13 +30,12 @@
 }
 
 .Container2_VideoUpload {
-  box-shadow: 2px 2px rgba(142, 142, 142, 0.681),
-    -2px -2px rgba(142, 142, 142, 0.681);
+  box-shadow: 2px 2px var(--box-shadow-color), -2px -2px var(--box-shadow-color);
   padding: 1rem;
   width: fit-content;
   height: fit-content;
-  background-color: black;
-  color: rgb(136, 133, 129);
+  background-color: var(--upload-bg);
+  color: var(--text-color);
   position: relative;
   margin: auto;
   display: flex;
@@ -28,7 +49,7 @@
   border-radius: 5px;
   background-color: transparent;
   padding: 0.2rem;
-  color: aliceblue;
+  color: var(--input-color);
   width: calc(100% - 2rem);
 }
 
@@ -41,14 +62,14 @@
 }
 
 .Button_VideoUpload {
-  background-color: black;
-  color: white;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   font-weight: bolder;
   border: 2px solid;
 }
 
 .Button_VideoUpload:hover {
-  color: orange;
+  color: var(--button-hover);
 }
 
 .Loader {

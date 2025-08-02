@@ -3,11 +3,14 @@ import "./Comments.css";
 import DisplayComments from "./DisplayComments";
 import {useDispatch, useSelector} from "react-redux";
 import {postComment} from "../../Action/Comments";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const Comments = ({video_id}) => {
   const dispatch = useDispatch();
   const [commentText, setCommentText] = useState("");
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const commentList = useSelector((state) => state.commentReducer);
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +33,7 @@ const Comments = ({video_id}) => {
     }
   };
   return (
-    <>
+    <div className={theme}>
       <form className="Comments_Submit_Form_Comments" onSubmit={handleOnSubmit}>
         <input
           type="text"
@@ -61,7 +64,7 @@ const Comments = ({video_id}) => {
             );
           })}
       </div>
-    </>
+    </div>
   );
 };
 

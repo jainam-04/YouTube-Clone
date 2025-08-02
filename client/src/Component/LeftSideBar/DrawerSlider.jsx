@@ -12,10 +12,15 @@ import {
 import {FaHistory} from "react-icons/fa";
 import {NavLink} from "react-router-dom";
 import shorts from "./shorts.png";
+import {useSelector} from "react-redux";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   return (
-    <>
+    <div className={theme}>
       <div className="Container_DrawerLeftSideBar" style={toggleDrawerSidebar}>
         <div className="Container2_DrawerLeftSideBar">
           <div className="Drawer_LeftSideBar">
@@ -159,7 +164,7 @@ const DrawerSlider = ({toggleDrawer, toggleDrawerSidebar}) => {
           onClick={() => toggleDrawer()}
         ></div>
       </div>
-    </>
+    </div>
   );
 };
 

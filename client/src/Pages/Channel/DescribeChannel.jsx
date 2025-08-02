@@ -2,17 +2,20 @@ import React from "react";
 import "./DescribeChannel.css";
 import {FaEdit, FaUpload} from "react-icons/fa";
 import {useSelector} from "react-redux";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const DescribeChannel = ({
   setVideoUploadPage,
   cid,
-  setEditCreateChannelButton,
+  setEditCreateChannelButton
 }) => {
   const channel = useSelector((state) => state.channelReducer);
   const currentChannel = channel?.filter((c) => c._id === cid)[0];
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   return (
-    <>
+    <div className={theme}>
       <div className="Container3_Channel">
         <div className="Channel_Logo_Channel">
           <b>{currentChannel?.name.charAt(0).toUpperCase()}</b>
@@ -40,7 +43,7 @@ const DescribeChannel = ({
           </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

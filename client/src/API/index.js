@@ -10,7 +10,8 @@ API.interceptors.request.use((req) => {
 })
 
 export const login = (authData) => API.post("/user/login", authData);
-export const register =(authData)=>API.post("/user/register", authData);
+export const register = (authData) => API.post("/user/register", authData);
+export const verifyOtp = (authData) => API.post("/user/verify_otp", authData);
 
 export const updateChannelData = (id, updateData) => API.patch(`/user/update/${id}`, updateData);
 export const fetchAllChannels = () => API.get("/user/get_all_channels");

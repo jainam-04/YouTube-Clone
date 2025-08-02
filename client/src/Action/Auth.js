@@ -1,24 +1,36 @@
 import * as api from "../API";
 import { setCurrentUser } from "./CurrentUser";
 
-export const login = (authData, navigate) => async (dispatch) => {
+export const login = (authData, navigate) => async () => {
       try {
-            const { data } = await api.login(authData)
-            dispatch({ type: "AUTH", data })
-            dispatch(setCurrentUser(JSON.parse(localStorage.getItem("profile"))))
-            navigate("/");
+            const { data } = await api.login(authData);
+            console.log(data);
+            localStorage.setItem("pendingUser", JSON.stringify({ ...data }));
+            navigate("/verify_otp");
       } catch (error) {
             alert(error?.response?.data?.message || "Login failed. Please try again...");
       }
 }
 
-export const register = (authData, navigate) => async (dispatch) => {
+export const register = (authData, navigate) => async () => {
       try {
             const { data } = await api.register(authData);
-            dispatch({ type: "AUTH", data });
-            dispatch(setCurrentUser(JSON.parse(localStorage.getItem("profile"))));
-            navigate("/");
+            console.log(data);
+            localStorage.setItem("pendingUser", JSON.stringify({ ...data }));
+            navigate("/verify_otp");
       } catch (error) {
             alert(error?.response?.data?.message || "Registration failed. Please try again...");
+      }
+}
+
+export const verifyOtp = (otpData, navigate) => async (dispatch) => {
+      try {
+            const { data } = await api.verifyOtp(otpData);
+            localStorage.removeItem("pendingUser");
+            dispatch({ type: "AUTH", data });
+            dispatch(setCurrentUser(data));
+            navigate("/");
+      } catch (error) {
+            alert(error?.response?.data?.message || "OTP verification failed. Please try again...");
       }
 }

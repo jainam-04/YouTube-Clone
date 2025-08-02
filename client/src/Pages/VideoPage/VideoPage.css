@@ -1,8 +1,28 @@
+.Dark_Theme {
+  --bg-main: #0b0b0b;
+  --text-main: #ffffff;
+  --bg-video: #000000;
+  --border-light: rgba(245, 222, 179, 0.175);
+  --channel-logo-bg: rgba(255, 255, 255, 0.667);
+  --channel-logo-text: black;
+  --link-color: aliceblue;
+}
+
+.Light_Theme {
+  --bg-main: #ffffff;
+  --text-main: #000000;
+  --bg-video: #f0f0f0;
+  --border-light: rgba(0, 0, 0, 0.1);
+  --channel-logo-bg: #222;
+  --channel-logo-text: white;
+  --link-color: #111;
+}
+
 .Container_VideoPage {
   height: calc(100vh - 3.4rem);
   overflow-y: auto;
-  background-color: rgb(11, 11, 11);
-  color: white;
+  background-color: var(--bg-main);
+  color: var(--text-main);
 }
 
 .Container2_VideoPage {
@@ -19,12 +39,12 @@
   padding: 0.1rem;
   height: 70vh;
   width: 100%;
-  background-color: black;
-  border: 1px solid rgba(37, 37, 37, 0.2);
+  background-color: var(--bg-video);
+  border: 1px solid var(--border-light);
 }
 
 .Video_Buttons_Title_VideoPage_Container {
-  border-bottom: 3px solid rgba(245, 222, 179, 0.175);
+  border-bottom: 3px solid var(--border-light);
   flex-grow: 1;
 }
 
@@ -32,6 +52,7 @@
   font-size: x-large;
   margin: 0;
   padding: 1rem 0.8rem;
+  color: var(--text-main);
 }
 
 .Views_Date_Buttons_VideoPage {
@@ -45,28 +66,29 @@
   font-size: 0.8rem;
   flex-grow: 1;
   align-items: center;
+  color: var(--text-main);
 }
 
 .Channel_Details_VideoPage {
-  border-bottom: 3px solid rgba(245, 222, 179, 0.175);
+  border-bottom: 3px solid var(--border-light);
   display: flex;
   text-decoration: none;
-  color: aliceblue;
+  color: var(--link-color);
   font-weight: bolder;
 }
 
 .Channel_Logo_VideoPage {
   display: flex;
-  border: 1px solid rgba(0, 0, 0, 0.19);
+  border: 1px solid var(--border-light);
   width: 4rem;
   height: 4rem;
   margin: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.667);
+  background-color: var(--channel-logo-bg);
   border-radius: 100%;
 }
 
 .Channel_Logo_VideoPage p {
-  color: black;
+  color: var(--channel-logo-text);
   margin: auto;
   font-size: xx-large;
 }
@@ -75,14 +97,17 @@
   font-weight: bolder;
   margin: auto 1rem;
   font-size: larger;
+  color: var(--text-main);
 }
 
 .Comments_VideoPage {
   width: 100%;
   padding-inline-start: 0.5rem;
+  color: var(--text-main);
 }
 
 .MoreVideoBar {
   width: calc(100vw - 4.5rem - 70vw);
   padding: 0 1rem;
+  color: var(--text-main);
 }

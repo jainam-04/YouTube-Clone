@@ -1,4 +1,12 @@
+.Dark_Theme {
+  --text-color: white;
+}
+
+.Light_Theme {
+  --text-color: black;
+}
+
 .Container_YourVideos {
   padding: 0.5rem;
-  color: white;
+  color: var(--text-color);
 }

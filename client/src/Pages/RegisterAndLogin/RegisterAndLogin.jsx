@@ -13,23 +13,24 @@ const RegisterAndLogin = () => {
     state: "",
     email: "",
     password: "",
+    mobile_no: "",
   });
   const handleSwitch = () => {
     setIsSignUp((prev) => !prev);
-    setFormData({state: "", email: "", password: ""});
+    setFormData({state: "", email: "", password: "", mobile_no: ""});
   };
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const {email, password, state} = formData;
-    if (!email || !password || (isSignUp && !state)) {
+    const {email, password, state, mobile_no} = formData;
+    if (!email || !password || (isSignUp && (!state || !mobile_no))) {
       alert("Please fill all required fields...");
       return;
     }
     if (isSignUp) {
-      dispatch(register({state, email, password}, navigate));
+      dispatch(register({state, email, password, mobile_no}, navigate));
     } else {
       dispatch(login({email, password}, navigate));
     }
@@ -40,16 +41,6 @@ const RegisterAndLogin = () => {
       <div className="Auth_Form_Container">
         <form onSubmit={handleSubmit} className="Auth_Form">
           <h2>{isSignUp ? "Create an account" : "Login to your account"}</h2>
-          {isSignUp && (
-            <input
-              type="text"
-              name="state"
-              placeholder="Enter your state"
-              value={formData.state}
-              onChange={handleChange}
-              required
-            />
-          )}
           <input
             type="email"
             name="email"
@@ -66,6 +57,26 @@ const RegisterAndLogin = () => {
             onChange={handleChange}
             required
           />
+          {isSignUp && (
+            <>
+              <input
+                type="text"
+                name="state"
+                placeholder="Enter your state"
+                value={formData.state}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="text"
+                name="mobile_no"
+                placeholder="Enter your mobile number"
+                value={formData.mobile_no}
+                onChange={handleChange}
+                required
+              />
+            </>
+          )}
           <button type="submit">{isSignUp ? "Register" : "Login"}</button>
           <p className="Switch_Auth_Mode" onClick={handleSwitch}>
             {isSignUp

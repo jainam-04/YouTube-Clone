@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import "./CustomVideoPlayer.css";
 import Hls from "hls.js";
 import {useSelector} from "react-redux";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const planDurations = {
   free: 5 * 60,
@@ -25,6 +26,8 @@ const CustomVideoPlayer = ({src}) => {
 
   const currentUser = useSelector((state) => state.currentUserReducer);
   const userPlan = currentUser?.result?.plan;
+  const state = currentTime?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
 
   const formatTime = (sec) => {
     const minutes = Math.floor(sec / 60);
@@ -165,65 +168,67 @@ const CustomVideoPlayer = ({src}) => {
   };
 
   return (
-    <div className="Video_Container">
-      <video
-        ref={videoRef}
-        playsInline
-        onPlay={handlePlay}
-        onPause={handlePause}
-      ></video>
+    <div className={theme}>
+      <div className="Video_Container">
+        <video
+          ref={videoRef}
+          playsInline
+          onPlay={handlePlay}
+          onPause={handlePause}
+        ></video>
 
-      <div className="Controls">
-        <button onClick={togglePlay}>{isPlaying ? "⏸️" : "▶️"}</button>
-        <span>{formatTime(currentTime)}</span>
-        <input
-          ref={seekbarRef}
-          type="range"
-          min="0"
-          max={duration}
-          value={currentTime}
-          onChange={handleSeek}
-          id="Seekbar"
-        />
-        <span>{formatTime(duration)}</span>
-        <input
-          type="range"
-          id="Volume"
-          min="0"
-          max="1"
-          step="0.01"
-          value={volume}
-          onChange={handleVolume}
-        />
-        <button onClick={() => setShowSettings((s) => !s)}>⚙️</button>
-        <button onClick={toggleFullscreen}>{fullscreen ? "❎" : "⛶"}</button>
-      </div>
-
-      {showSettings && (
-        <div className="Settings_Menu">
-          <strong>Speed</strong>
-          {[0.5, 1, 1.5, 2].map((rate) => (
-            <button
-              key={rate}
-              className={rate === playbackRate ? "active" : ""}
-              onClick={() => changeSpeed(rate)}
-            >
-              {rate}x
-            </button>
-          ))}
-
-          <strong>Quality</strong>
-          {availableQualities.map((q) => (
-            <button
-              key={q.label}
-              className={q.label === selectedQuality ? "active" : ""}
-              onClick={() => changeQuality(q.index, q.label)}
-            >
-              {q.label}
-            </button>
-          ))}
+        <div className="Controls">
+          <button onClick={togglePlay}>{isPlaying ? "⏸️" : "▶️"}</button>
+          <span>{formatTime(currentTime)}</span>
+          <input
+            ref={seekbarRef}
+            type="range"
+            min="0"
+            max={duration}
+            value={currentTime}
+            onChange={handleSeek}
+            id="Seekbar"
+          />
+          <span>{formatTime(duration)}</span>
+          <input
+            type="range"
+            id="Volume"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={handleVolume}
+          />
+          <button onClick={() => setShowSettings((s) => !s)}>⚙️</button>
+          <button onClick={toggleFullscreen}>{fullscreen ? "❎" : "⛶"}</button>
         </div>
-      )}
+
+        {showSettings && (
+          <div className="Settings_Menu">
+            <strong>Speed</strong>
+            {[0.5, 1, 1.5, 2].map((rate) => (
+              <button
+                key={rate}
+                className={rate === playbackRate ? "active" : ""}
+                onClick={() => changeSpeed(rate)}
+              >
+                {rate}x
+              </button>
+            ))}
+
+            <strong>Quality</strong>
+            {availableQualities.map((q) => (
+              <button
+                key={q.label}
+                className={q.label === selectedQuality ? "active" : ""}
+                onClick={() => changeQuality(q.index, q.label)}
+              >
+                {q.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

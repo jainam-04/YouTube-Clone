@@ -4,17 +4,20 @@ import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import WHLVideoList from "./WHLVideoList";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteHistory} from "../../Action/History";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const WHL = ({page, videoList}) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const handleClearHistory = () => {
     if (currentUser) {
       dispatch(deleteHistory({user_id: currentUser?.result?._id}));
     }
   };
   return (
-    <>
+    <div className={theme}>
       <div className="Container_Pages_App">
         <LeftSideBar />
         <div className="Container2_Pages_App">
@@ -43,7 +46,7 @@ const WHL = ({page, videoList}) => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

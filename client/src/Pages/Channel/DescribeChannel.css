@@ -1,31 +1,60 @@
+.Dark_Theme {
+  --channel-border: rgba(1, 26, 96, 0.692);
+  --channel-text: whitesmoke;
+  --channel-logo-border: rgba(49, 7, 219, 0.66);
+  --channel-logo-bg: rgba(92, 135, 4, 0.769);
+  --channel-heading: whitesmoke;
+  --channel-desc: #ccc;
+  --channel-button-bg: blue;
+  --channel-button-color: white;
+  --channel-button-hover-border: #fff;
+  --channel-button-hover-text: rgb(231, 140, 14);
+}
+
+.Light_Theme {
+  --channel-border: rgba(0, 0, 128, 0.1);
+  --channel-text: #222;
+  --channel-logo-border: #007bff;
+  --channel-logo-bg: #d1e7dd;
+  --channel-heading: #111;
+  --channel-desc: #555;
+  --channel-button-bg: #007bff;
+  --channel-button-color: white;
+  --channel-button-hover-border: #007bff;
+  --channel-button-hover-text: #ff5722;
+}
+
 .Container3_Channel {
-  border-bottom: 3px solid rgba(1, 26, 96, 0.692);
+  border-bottom: 3px solid var(--channel-border);
   padding: 0.5rem;
-  color: whitesmoke;
+  color: var(--channel-text);
   position: relative;
 }
 
 .Channel_Logo_Channel {
-  border: 10px solid rgba(49, 7, 219, 0.66);
+  border: 10px solid var(--channel-logo-border);
   width: 5rem;
   height: 5rem;
   border-radius: 100%;
   display: flex;
   margin: 0 auto;
-  background-color: rgba(92, 135, 4, 0.769);
+  background-color: var(--channel-logo-bg);
 }
 
 .Channel_Logo_Channel b {
   margin: auto;
   font-size: 3rem;
+  color: var(--channel-heading);
 }
 
 .Description_Channel {
   text-align: center;
+  color: var(--channel-desc);
 }
 
 .Description_Channel b {
   font-size: 4rem;
+  color: var(--channel-heading);
 }
 
 .Description_Channel p {
@@ -37,11 +66,11 @@
   position: absolute;
   right: 1rem;
   top: 0.5rem;
-  background-color: blue;
+  background-color: var(--channel-button-bg);
   padding: 0.5rem;
   border: 2px solid transparent;
   border-radius: 0.5rem;
-  color: white;
+  color: var(--channel-button-color);
   transition: all 1s;
   cursor: pointer;
 }
@@ -52,6 +81,6 @@
 
 .UploadButton_Channel:hover,
 .EditButton_Channel:hover {
-  border: 2px solid;
-  color: rgb(231, 140, 14);
+  border: 2px solid var(--channel-button-hover-border);
+  color: var(--channel-button-hover-text);
 }

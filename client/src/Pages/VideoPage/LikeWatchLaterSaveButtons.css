@@ -1,3 +1,15 @@
+.Dark_Theme {
+  --video-btn-color: white;
+  --video-btn-hover: #e0e0e0;
+  --video-icon-color: #ccc;
+}
+
+.Light_Theme {
+  --video-btn-color: #111;
+  --video-btn-hover: #333;
+  --video-icon-color: #444;
+}
+
 .Buttons_Container_VideoPage {
   display: flex;
   flex-grow: 5;
@@ -7,14 +19,22 @@
 .Button_VideoPage {
   margin: auto 0;
   display: flex;
+  color: var(--video-btn-color);
 }
 
 .Like_VideoPage {
   margin: 0.5rem;
   display: flex;
   cursor: pointer;
+  color: var(--video-icon-color);
+  transition: color 0.3s ease;
+}
+
+.Like_VideoPage:hover {
+  color: var(--video-btn-hover);
 }
 
 .Buttons_VideoPage {
   margin: auto 0.5rem;
+  color: var(--video-btn-color);
 }

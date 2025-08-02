@@ -1,8 +1,26 @@
+.Dark_Theme {
+  --navbar-bg: rgb(33, 33, 33);
+  --burger-line: rgb(255, 244, 244);
+  --logo-color: white;
+  --auth-bg: rgb(36, 36, 36);
+  --auth-text: #3ea6ff;
+  --appbox-border: white;
+}
+
+.Light_Theme {
+  --navbar-bg: white;
+  --burger-line: black;
+  --logo-color: black;
+  --auth-bg: rgb(240, 240, 240);
+  --auth-text: #007acc;
+  --appbox-border: black;
+}
+
 .Container_Navbar {
   border: 1px solid;
   display: flex;
   height: calc(3.5rem - 2px);
-  background-color: rgb(33, 33, 33);
+  background-color: var(--navbar-bg);
   justify-content: space-between;
 }
 
@@ -28,7 +46,7 @@
   margin: 0.5px;
   width: 1.2rem;
   height: 0.1rem;
-  background-color: rgb(255, 244, 244);
+  background-color: var(--burger-line);
 }
 
 .Logo_Div_Navbar {
@@ -38,7 +56,7 @@
 
 .Logo_Title_Navbar {
   margin: auto;
-  color: white;
+  color: var(--logo-color);
   font-weight: bold;
 }
 
@@ -52,7 +70,7 @@
 }
 
 .AppBox {
-  border: 1px solid white;
+  border: 1px solid var(--appbox-border);
   margin: 0.1rem;
   width: 2px;
   height: 2px;
@@ -67,8 +85,8 @@
 
 .Auth_Button {
   cursor: pointer;
-  color: #3ea6ff;
-  background-color: rgb(36, 36, 36);
+  color: var(--auth-text);
+  background-color: var(--auth-bg);
   border: 2px solid;
   margin: 0;
   padding: 0.5rem;

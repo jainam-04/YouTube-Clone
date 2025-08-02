@@ -1,15 +1,31 @@
+.Dark_Theme {
+  --nav-text: white;
+  --nav-bg: rgb(37, 37, 37);
+  --nav-border: rgba(128, 128, 128, 0.27);
+  --nav-btn-bg: rgb(46, 46, 46);
+  --nav-btn-hover: rgb(128, 128, 128);
+}
+
+.Light_Theme {
+  --nav-text: black;
+  --nav-bg: #f2f2f2;
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --nav-btn-bg: #e0e0e0;
+  --nav-btn-hover: #ccc;
+}
+
 .Navigation_Home {
-  color: white;
-  background-color: rgb(37, 37, 37);
+  color: var(--nav-text);
+  background-color: var(--nav-bg);
   position: sticky;
   display: flex;
   overflow-x: auto;
   top: 0;
-  border-bottom: 2px solid rgb(128, 128, 128, 0.27);
+  border-bottom: 2px solid var(--nav-border);
 }
 
 .Button_Nav_Home {
-  background-color: rgb(46, 46, 46);
+  background-color: var(--nav-btn-bg);
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 45px;
@@ -17,5 +33,5 @@
 }
 
 .Button_Nav_Home:hover {
-  background-color: rgb(128, 128, 128);
+  background-color: var(--nav-btn-hover);
 }

@@ -1,25 +1,24 @@
 import React from "react";
 import {BiLogOut} from "react-icons/bi";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "./Auth.css";
-import {googleLogout} from "@react-oauth/google";
 import {useDispatch} from "react-redux";
 import {setCurrentUser} from "../../Action/CurrentUser";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
   const dispatch = useDispatch();
-  // const logout = () => {
-  //   dispatch(setCurrentUser(null));
-  //   localStorage.clear();
-  //   googleLogout();
-  // };
+  const navigate = useNavigate();
+  const state = user?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const logout = () => {
     dispatch(setCurrentUser(null));
     localStorage.clear();
     setAuthButton(false);
+    navigate("/");
   };
   return (
-    <>
+    <div className={theme}>
       <div className="Auth_Container" onClick={() => setAuthButton(false)}>
         <div className="Auth_Container2" onClick={(e) => e.stopPropagation()}>
           <p className="User_Details">
@@ -69,7 +68,7 @@ const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

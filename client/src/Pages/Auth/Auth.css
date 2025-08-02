@@ -1,3 +1,17 @@
+.Dark_Theme {
+  --auth-bg: rgb(16, 16, 16);
+  --auth-text: aliceblue;
+  --auth-border: rgba(102, 102, 102, 0.6);
+  --auth-btn-hover: rgb(47, 47, 47);
+}
+
+.Light_Theme {
+  --auth-bg: #ffffff;
+  --auth-text: #111;
+  --auth-border: rgba(100, 100, 100, 0.3);
+  --auth-btn-hover: #e2e2e2;
+}
+
 .Auth_Container {
   width: 100vw;
   height: 100vh;
@@ -14,12 +28,12 @@
   display: flex;
   position: absolute;
   right: 2.5rem;
-  background-color: rgb(16, 16, 16);
+  background-color: var(--auth-bg);
   top: 1rem;
   text-align: center;
   flex-direction: column;
-  border: px solid rgba(102, 102, 102, 0.6);
-  color: aliceblue;
+  border: 1px solid var(--auth-border);
+  color: var(--auth-text);
   z-index: 500;
 }
 
@@ -36,20 +50,22 @@
   padding: 0.2rem 0.5rem;
   font-weight: bolder;
   margin: auto;
+  color: var(--auth-text);
 }
 
 .Button_Auth {
-  color: aliceblue;
+  color: var(--auth-text);
   font-weight: bolder;
   font-size: larger;
   padding: 0.5rem 0.5rem;
   border: 0;
   margin: 0.2rem 0;
   background-color: transparent;
+  transition: background-color 0.2s;
 }
 
 .Button_Auth:hover {
-  background-color: rgb(47, 47, 47);
+  background-color: var(--auth-btn-hover);
 }
 
 .Buttons_Auth {

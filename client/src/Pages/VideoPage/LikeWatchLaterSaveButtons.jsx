@@ -23,6 +23,7 @@ import {
   addDownloadedVideos,
   deleteDownloadedVideos,
 } from "../../Action/DownloadedVideos.js";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime.js";
 
 const LikeWatchLaterSaveButtons = ({vv, vid}) => {
   const dispatch = useDispatch();
@@ -31,6 +32,8 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
   const [likeButton, setLikeButton] = useState(false);
   const [downloadVideo, setDownloadVideo] = useState(false);
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const likedVideoList = useSelector((state) => state.likedVideoReducer);
   const watchLaterList = useSelector((state) => state.watchLaterReducer);
   const downloadedVideosList = useSelector(
@@ -175,7 +178,7 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
     }
   };
   return (
-    <>
+    <div className={theme}>
       <div className="Buttons_Container_VideoPage">
         <div className="Button_VideoPage">
           <BsThreeDots />
@@ -254,7 +257,7 @@ const LikeWatchLaterSaveButtons = ({vv, vid}) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

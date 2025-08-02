@@ -6,14 +6,17 @@ import {MdOutlineWatchLater} from "react-icons/md";
 import LeftSideBar from "../../Component/LeftSideBar/LeftSideBar";
 import WHLVideoList from "../../Component/WHL/WHLVideoList";
 import {useSelector} from "react-redux";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
 
 const Library = () => {
   const likedVideoList = useSelector((state) => state.likedVideoReducer);
   const watchLaterList = useSelector((state) => state.watchLaterReducer);
   const watchHistoryVideoList = useSelector((state) => state.historyReducer);
   const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   return (
-    <>
+    <div className={theme}>
       <div className="Container_Pages_App">
         <LeftSideBar />
         <div className="Container2_Pages_App">
@@ -64,7 +67,7 @@ const Library = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

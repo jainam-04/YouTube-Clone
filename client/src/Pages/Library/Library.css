@@ -1,7 +1,19 @@
+.Dark_Theme {
+  --lib-text-color: aliceblue;
+  --lib-title-color: #ffffff;
+  --lib-border-color: grey;
+}
+
+.Light_Theme {
+  --lib-text-color: #1e1e1e;
+  --lib-title-color: #111111;
+  --lib-border-color: #cccccc;
+}
+
 .Container_LibraryPage {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid var(--lib-border-color);
   padding: 1rem 2rem;
-  color: aliceblue;
+  color: var(--lib-text-color);
 }
 
 .Title_Container_LibraryPage {
@@ -12,7 +24,7 @@
   margin: auto 0.5rem;
   padding: auto 0.5rem;
   font-size: medium;
-  color: #ffffff;
+  color: var(--lib-title-color);
 }
 
 .Container_VideoList_LibraryPage {

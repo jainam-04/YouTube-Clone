@@ -8,6 +8,7 @@ import {
   createOrderForDownloads,
   successPaymentForDownloads,
 } from "../../Action/UpgradePlanForDownloads.js";
+import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime.js";
 
 const plans = [
   {
@@ -54,6 +55,8 @@ const premiumPlans = [
 const UpgradePlan = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.currentUserReducer);
+  const state = user?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   const handleUpgradePlan = async (plan) => {
     try {
       if (plan.name === "free") {
@@ -135,32 +138,34 @@ const UpgradePlan = () => {
     }
   };
   return (
-    <div className="Container_Pages_App">
-      <LeftSideBar />
-      <div className="Upgrade_Container">
-        <h2>Upgrade Your Plan</h2>
-        <div className="Plans_Wrapper">
-          {plans.map((plan) => (
-            <div key={plan.name} className="Plan_Card">
-              <h3>{plan.name.toUpperCase()}</h3>
-              <p>₹{plan.price}</p>
-              <button onClick={() => handleUpgradePlan(plan)}>Upgrade</button>
-            </div>
-          ))}
+    <div className={theme}>
+      <div className="Container_Pages_App">
+        <LeftSideBar />
+        <div className="Upgrade_Container">
+          <h2>Upgrade Your Plan</h2>
+          <div className="Plans_Wrapper">
+            {plans.map((plan) => (
+              <div key={plan.name} className="Plan_Card">
+                <h3>{plan.name.toUpperCase()}</h3>
+                <p>₹{plan.price}</p>
+                <button onClick={() => handleUpgradePlan(plan)}>Upgrade</button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="Upgrade_Container">
-        <h2>Upgrade your premium plan</h2>
-        <div className="Plans_Wrapper">
-          {premiumPlans.map((premium_plan) => (
-            <div key={premium_plan.name} className="Plan_Card">
-              <h3>{premium_plan.name.toUpperCase()}</h3>
-              <p>₹{premium_plan.price}</p>
-              <button onClick={() => handleUpgradePremiumPlan(premium_plan)}>
-                Upgrade
-              </button>
-            </div>
-          ))}
+        <div className="Upgrade_Container">
+          <h2>Upgrade your premium plan</h2>
+          <div className="Plans_Wrapper">
+            {premiumPlans.map((premium_plan) => (
+              <div key={premium_plan.name} className="Plan_Card">
+                <h3>{premium_plan.name.toUpperCase()}</h3>
+                <p>₹{premium_plan.price}</p>
+                <button onClick={() => handleUpgradePremiumPlan(premium_plan)}>
+                  Upgrade
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import {FaSearch} from "react-icons/fa";
 import SearchList from "./SearchList";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import changeThemeBasedOnTime from "../../../Utils/ChangeThemeBasedOnTime.js";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,8 +15,11 @@ const SearchBar = () => {
       q.video_title.toUpperCase().includes(searchQuery?.toUpperCase())
     )
     .map((m) => m?.video_title);
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  const state = currentUser?.result?.state;
+  const theme = changeThemeBasedOnTime(state);
   return (
-    <>
+    <div className={theme}>
       <div className="SearchBar_Container">
         <div className="SearchBar_Container2">
           <div className="Search_Div">
@@ -40,7 +44,7 @@ const SearchBar = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
