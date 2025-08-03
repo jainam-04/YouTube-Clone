@@ -13,7 +13,7 @@ export const uploadVideo = async (req, res) => {
                   const inputFilePath = req.file.path;
                   const fileName = req.file.originalname;
                   const videoId = fileName.split(".")[0];
-                  const outputDir = path.join("Uploads", videoId);
+                  const outputDir = path.join("Uploads", videoId).replace(/\\/g, "/");
 
                   fs.mkdirSync(outputDir, { recursive: true });
 
