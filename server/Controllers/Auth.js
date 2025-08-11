@@ -43,6 +43,24 @@ export const login = async (req, res) => {
       }
 }
 
+export const logout = async (req, res) => {
+      try {
+            const userId = req.user_id;
+            const user = await users.findById(userId);
+            if (!user) {
+                  console.log("User not found during logout");
+                  return res.status(404).json({ message: "User not found" });
+            }
+            user.is_logged_in = false;
+            await user.save();
+            console.log("User logged out successfully");
+            res.status(200).json({ message: "User logged out successfully" });
+      } catch (error) {
+            console.log("Logout Error: ", error.message);
+            res.status(500).json({ message: error.message });
+      }
+}
+
 export const register = async (req, res) => {
       const { email, password, state, mobile_no } = req.body;
       try {
@@ -86,6 +104,7 @@ export const verifyOTP = async (req, res) => {
             user.otp = null;
             user.otp_expire = null;
             user.is_verified = true;
+            user.is_logged_in = true;
             await user.save();
             const token = jwt.sign({
                   id: user._id,

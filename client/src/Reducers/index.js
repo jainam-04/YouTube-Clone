@@ -10,6 +10,7 @@ import watchLaterReducer from "./WatchLater.js"
 import upgradePlanReducer from "./UpgradePlan.js"
 import downloadedVideosReducer from "./DownloadedVideos.js"
 import upgradePlanForDownloadsReducer from "./UpgradePlanForDownloads.js"
+import userIdReducer from "./GetUserIdsByEmail.js"
 
 export default combineReducers({
       authReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
       watchLaterReducer,
       upgradePlanReducer,
       downloadedVideosReducer,
-      upgradePlanForDownloadsReducer
+      upgradePlanForDownloadsReducer,
+      userIdReducer
 });

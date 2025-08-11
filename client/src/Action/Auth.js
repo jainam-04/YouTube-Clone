@@ -23,6 +23,16 @@ export const register = (authData, navigate) => async () => {
       }
 }
 
+export const logout = (navigate) => async () => {
+      try {
+            await api.logout();
+            localStorage.clear();
+            navigate("/");
+      } catch (error) {
+            alert(error?.response?.data?.message || "Logout failed. Please try again...");
+      }
+}
+
 export const verifyOtp = (otpData, navigate) => async (dispatch) => {
       try {
             const { data } = await api.verifyOtp(otpData);

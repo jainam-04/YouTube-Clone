@@ -1,0 +1,67 @@
+.Call_Room {
+  padding: 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.Video_Container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.Video {
+  width: 45%;
+  max-width: 600px;
+  height: auto;
+  background-color: black;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.Controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.Controls button {
+  width: 55px;
+  height: 55px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.Controls button:hover {
+  background-color: #ffcc00;
+  color: #000;
+  transform: scale(1.1);
+}
+
+.Controls button:active {
+  transform: scale(0.95);
+}
+
+.Download_Section {
+  margin-top: 20px;
+}
+
+.Download_Section a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}

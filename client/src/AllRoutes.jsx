@@ -13,6 +13,8 @@ import UpgradePlan from "./Pages/UpgradePlan/UpgradePlan";
 import DownloadedVideos from "./Pages/DownloadedVideos/DownloadedVideos";
 import RegisterAndLogin from "./Pages/RegisterAndLogin/RegisterAndLogin";
 import VerifyOTP from "./Pages/RegisterAndLogin/VerifyOTP";
+import CallPage from "./Pages/Call/CallPage";
+import CallRoom from "./Pages/Call/CallRoom";
 
 const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
   return (
@@ -38,6 +40,8 @@ const AllRoutes = ({setEditCreateChannelButton, setVideoUploadPage}) => {
       <Route path="/downloaded_videos" element={<DownloadedVideos />} />
       <Route path="/auth" element={<RegisterAndLogin />} />
       <Route path="/verify_otp" element={<VerifyOTP />} />
+      <Route path="/call" element={<CallPage />} />
+      <Route path="/call/:roomId" element={<CallRoom />} />
     </Routes>
   );
 };

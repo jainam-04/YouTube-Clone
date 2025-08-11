@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCurrentUser} from "../../Action/CurrentUser";
 import {jwtDecode} from "jwt-decode";
 import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
+import {logout} from "../../Action/Auth.js";
 
 const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
   const [authButton, setAuthButton] = useState(false);
@@ -19,9 +20,9 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
   const currentUser = useSelector((state) => state.currentUserReducer);
   const state = currentUser?.result?.state;
   const theme = changeThemeBasedOnTime(state);
-  const logout = () => {
+  const logOut = () => {
     dispatch(setCurrentUser(null));
-    localStorage.clear();
+    dispatch(logout());
     navigate("/");
   };
   useEffect(() => {
@@ -29,7 +30,7 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
     if (token) {
       const decodeToken = jwtDecode(token);
       if (decodeToken.exp * 1000 < new Date().getTime()) {
-        logout();
+        logOut();
       }
     }
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("profile"))));
@@ -49,7 +50,9 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
           </Link>
         </div>
         <SearchBar />
-        <RiVideoAddLine size={22} className="Vid_Bell_Navbar" />
+        <Link to={"/call"} className="Vid_Bell_Navbar">
+          <RiVideoAddLine size={22} />
+        </Link>
         <div className="Apps_Box">
           <p className="AppBox"></p>
           <p className="AppBox"></p>

@@ -64,6 +64,10 @@ const userSchema = mongoose.Schema({
       is_verified: {
             type: Boolean,
             default: false
+      },
+      is_logged_in: {
+            type: Boolean,
+            default: false
       }
 })
 

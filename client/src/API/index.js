@@ -12,6 +12,8 @@ API.interceptors.request.use((req) => {
 export const login = (authData) => API.post("/user/login", authData);
 export const register = (authData) => API.post("/user/register", authData);
 export const verifyOtp = (authData) => API.post("/user/verify_otp", authData);
+export const getUserIdsByEmails = (callerEmail, receiverEmail) => API.post("/user/get_user_ids", { callerEmail, receiverEmail });
+export const logout = () => API.post("/user/logout");
 
 export const updateChannelData = (id, updateData) => API.patch(`/user/update/${id}`, updateData);
 export const fetchAllChannels = () => API.get("/user/get_all_channels");
@@ -47,3 +49,5 @@ export const deleteWatchLater = (video_id, viewer) => API.delete(`/video/delete_
 export const addDownloadedVideos = ({ video_id, viewer }) => API.post("/video/add_downloaded_videos", { video_id, viewer });
 export const getAllDownloadedVideos = (viewer) => API.get(`/video/get_downloaded_videos/${viewer}`);
 export const deleteDownloadedVideos = (video_id, viewer) => API.delete(`/video/delete_downloaded_videos/${video_id}/${viewer}`);
+
+export const saveCallHistory = (callData) => API.post("/user/save_call_history", callData);

@@ -5,17 +5,17 @@ import "./Auth.css";
 import {useDispatch} from "react-redux";
 import {setCurrentUser} from "../../Action/CurrentUser";
 import changeThemeBasedOnTime from "../../Utils/ChangeThemeBasedOnTime";
+import {logout} from "../../Action/Auth.js";
 
 const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = user?.result?.state;
   const theme = changeThemeBasedOnTime(state);
-  const logout = () => {
+  const logOut = () => {
     dispatch(setCurrentUser(null));
-    localStorage.clear();
+    dispatch(logout(navigate));
     setAuthButton(false);
-    navigate("/");
   };
   return (
     <div className={theme}>
@@ -60,7 +60,7 @@ const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
               </>
             )}
             <div>
-              <div className="Button_Auth" onClick={() => logout()}>
+              <div className="Button_Auth" onClick={() => logOut()}>
                 <BiLogOut />
                 Log Out
               </div>
