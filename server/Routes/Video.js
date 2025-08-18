@@ -15,6 +15,7 @@ routes.post("/upload_video", auth, upload.single("file"), uploadVideo);
 routes.get("/get_videos", getAllVideos);
 routes.patch("/like/:id", auth, likeVideoController);
 routes.patch("/views/:id", viewsController);
+routes.get("/progress/:jobId", getProgressById);
 
 routes.post("/history", auth, historyController);
 routes.get("/get_all_history", getAllHistoryController);

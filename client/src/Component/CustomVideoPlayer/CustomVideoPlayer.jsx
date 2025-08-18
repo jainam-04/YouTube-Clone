@@ -38,7 +38,7 @@ const CustomVideoPlayer = ({src}) => {
   useEffect(() => {
     const video = videoRef.current;
 
-    if (Hls.isSupported() && src.endsWith(".m3u8")) {
+    if (Hls.isSupported() && src.includes("master.m3u8")) {
       const hls = new Hls();
       hls.loadSource(src);
       hls.attachMedia(video);
@@ -58,9 +58,15 @@ const CustomVideoPlayer = ({src}) => {
       });
 
       video.hlsInstance = hls; // Save hls instance for later
-      return () => hls.destroy();
+      return () => {
+        hls.destroy();
+        video.hlsInstance = null;
+      }
     } else {
       video.src = src;
+      video.addEventListener("error", ()=>{
+        console.log("Video playback failed");
+      })
     }
   }, [src]);
 

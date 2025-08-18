@@ -18,7 +18,7 @@ const VideoPage = () => {
   const state = currentUser?.result?.state;
   const theme = changeThemeBasedOnTime(state);
   const vv = videoList?.data?.filter((q) => q._id === vid)[0];
-  const src = `http://localhost:5000/${vv?.file_path}`.replace(/\\/g, "/");
+  const src = `${vv?.file_path}`;
   const handleViews = () => {
     dispatch(viewVideo({id: vid}));
   };

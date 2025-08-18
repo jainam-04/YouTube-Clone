@@ -13,7 +13,7 @@ const ShowVideo = ({vid}) => {
     <div className={theme}>
       <Link to={`/videoPage/${vid._id}`}>
         <video
-          src={`http://localhost:5000/${vid?.file_path}`}
+          src={`${vid?.file_path}`}
           className="Video_ShowVideo"
         />
       </Link>
