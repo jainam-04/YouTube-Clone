@@ -51,8 +51,14 @@ export const logout = async (req, res) => {
                   console.log("User not found during logout");
                   return res.status(404).json({ message: "User not found" });
             }
-            user.is_logged_in = false;
-            await user.save();
+            if (user) {
+                  user.is_logged_in = false;
+                  await user.save();
+            }
+            if (req.expired) {
+                  console.log("Token was expired but user marked as logged out");
+                  return res.status(200).json({ message: "Token expired, user logged out locally" });
+            }
             console.log("User logged out successfully");
             res.status(200).json({ message: "User logged out successfully" });
       } catch (error) {

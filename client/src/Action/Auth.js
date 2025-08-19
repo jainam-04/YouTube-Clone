@@ -23,10 +23,12 @@ export const register = (authData, navigate) => async () => {
       }
 }
 
-export const logout = (navigate) => async () => {
+export const logout = (navigate, expired = false) => async () => {
       try {
-            await api.logout();
             localStorage.clear();
+            if (!expired) {
+                  await api.logout();
+            }
             navigate("/");
       } catch (error) {
             alert(error?.response?.data?.message || "Logout failed. Please try again...");

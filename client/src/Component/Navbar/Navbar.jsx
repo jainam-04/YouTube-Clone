@@ -20,17 +20,13 @@ const Navbar = ({setEditCreateChannelButton, toggleDrawer}) => {
   const currentUser = useSelector((state) => state.currentUserReducer);
   const state = currentUser?.result?.state;
   const theme = changeThemeBasedOnTime(state);
-  const logOut = () => {
-    dispatch(setCurrentUser(null));
-    dispatch(logout());
-    navigate("/");
-  };
   useEffect(() => {
     const token = currentUser?.token;
     if (token) {
       const decodeToken = jwtDecode(token);
       if (decodeToken.exp * 1000 < new Date().getTime()) {
-        logOut();
+        dispatch(setCurrentUser(null));
+        dispatch(logout(navigate, true));
       }
     }
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("profile"))));

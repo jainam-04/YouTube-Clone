@@ -14,7 +14,7 @@ const Auth = ({user, setEditCreateChannelButton, setAuthButton}) => {
   const theme = changeThemeBasedOnTime(state);
   const logOut = () => {
     dispatch(setCurrentUser(null));
-    dispatch(logout(navigate));
+    dispatch(logout(navigate, true));
     setAuthButton(false);
   };
   return (
