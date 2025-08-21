@@ -15,7 +15,7 @@ import Peer from "simple-peer";
 import "./CallRoom.css";
 import {saveCallHistory} from "../../Action/Call.js";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://youtube-clone-ihgl.onrender.com");
 
 const CallRoom = () => {
   const {roomId} = useParams();

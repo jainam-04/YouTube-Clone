@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {getUserIdsByEmails} from "../../Action/UserIds.js";
 import {io} from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://youtube-clone-ihgl.onrender.com");
 
 const CallPage = () => {
   const dispatch = useDispatch();
