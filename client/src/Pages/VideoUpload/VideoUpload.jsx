@@ -33,7 +33,7 @@ const VideoUpload = ({setVideoUploadPage}) => {
     jobIdRef.current = jobId;
     pollTimerRef.current = setInterval(async () => {
       try {
-        const {data} = await axios.get(`http://localhost:5000/video/progress/${jobId}`);
+        const {data} = await axios.get(`https://youtube-clone-ihgl.onrender.com/video/progress/${jobId}`);
         const server = Math.max(0, Math.min(100, data?.percent ?? 0));
         serverPctRef.current = server;
 
