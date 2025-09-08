@@ -6,12 +6,12 @@ A full-featured YouTube clone web application where users can sign in, create an
 
 ## 📚 Table of Contents
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Contributing](#-contributing)
-- [Contact](#-contact)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
 ---
 
@@ -79,7 +79,7 @@ cd YouTube-Clone
 npm install
 
 # Set up environment variables
-# (e.g., .env file for DB, JWT secrets, etc.)
+# (e.g., .env file for DB, JWT secrets, Razorpay keys, Fast2SMS keys)
 
 # Start the server
 npm run dev
@@ -93,7 +93,9 @@ npm run dev
 2. Create your own channel.
 3. Upload and manage your videos.
 4. Interact with videos using likes, comments, and save-for-later.
-5. Revisit your activity via History, Liked, or Watch Later sections.
+5. Subscribe to plans for extended video access or downloads.
+6. Make video calls and share YouTube screens.
+7. Revisit your activity via History, Liked, or Watch Later sections.
 
 ---
 
@@ -107,5 +109,5 @@ Feel free to fork the repo and submit a pull request.
 ## 📫 Contact
 
 For any questions or feedback, reach out at:
-📧 [jainamrupani04@gmail.com]
-🔗 https://github.com/jainam-04
+📧 jainamrupani04@gmail.com
+🔗 [GitHub](https://github.com/jainam-04)
