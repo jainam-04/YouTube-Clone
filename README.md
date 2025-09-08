@@ -1,10 +1,10 @@
-# 🎥 YouTube Clone
+# YouTube Clone
 
 A full-featured YouTube clone web application where users can sign in, create and manage channels, upload and interact with videos, and engage with the community through comments and likes.
 
 ---
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -15,46 +15,46 @@ A full-featured YouTube clone web application where users can sign in, create an
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🔐 **Authentication**: Users can sign in securely using JWT/OAuth.
-- 🎬 **Channel Management**:
+- **Authentication**: Users can sign in securely using JWT/OAuth.
+- **Channel Management**:
   - Create a personal channel
   - Edit channel details
-- 📤 **Video Upload & Management**:
+- **Video Upload & Management**:
   - Upload videos
   - View videos from all users
   - Download videos (Free users limited, Premium users unlimited)
-- 💻 **Video Player Features**:
+- **Video Player Features**:
   - Play videos at multiple qualities (320p, 480p, 720p, 1080p)
   - Custom controls including speed, quality, and fullscreen
-- 💰 **Subscription & Payment**:
+- **Subscription & Payment**:
   - Upgrade plans: Free, Bronze, Silver, Gold
   - Time-limited video access based on plan
   - Razorpay integration for test payments
   - Email invoice on successful payment
-- 💬 **Comments System**:
+- **Comments System**:
   - Post comments on videos
   - Edit and delete your own comments
-- 👍 **Engagement Features**:
+- **Engagement Features**:
   - Like or dislike videos
   - Save videos for later
-- ⏱ **Watch History & Watch Later**:
+- **Watch History & Watch Later**:
   - Tracks watched videos
   - Access saved videos for later viewing
-- ❤️ **Liked Videos**:
+- **Liked Videos**:
   - Easily revisit videos you've liked
-- 🌐 **Dynamic Theme & OTP Verification**:
+- **Dynamic Theme & OTP Verification**:
   - Website theme changes based on login time and location
   - OTP sent via email for southern India, via mobile (Fast2SMS) for other states
-- 📹 **VoIP & Screen Sharing**:
+- **VoIP & Screen Sharing**:
   - Video calls between users
   - Share YouTube screen
   - Record video sessions locally
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Frontend**: React.js
 - **Backend**: Node.js / Express / MongoDB
@@ -68,7 +68,7 @@ A full-featured YouTube clone web application where users can sign in, create an
 
 ---
 
-## 📦 Installation
+## Installation
 
 ```bash
 # Clone the repository
@@ -87,7 +87,7 @@ npm run dev
 
 ---
 
-## ✍️ Usage
+## Usage
 
 1. Sign in to create an account.
 2. Create your own channel.
@@ -99,14 +99,14 @@ npm run dev
 
 ---
 
-## 🙌 Contributing
+## Contributing
 
 Contributions are welcome!
 Feel free to fork the repo and submit a pull request.
 
 ---
 
-## 📫 Contact
+## Contact
 
 For any questions or feedback, reach out at:
 📧 jainamrupani04@gmail.com
